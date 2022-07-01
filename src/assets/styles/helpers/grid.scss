@@ -1,0 +1,50 @@
+$grid__bp--sm: 576;
+$grid__bp--md: 768;
+$grid__bp--lg: 992;
+$grid__bp--xlg: 1200;
+$grid__cols: 12;
+
+.container-grid {
+  margin: 0;
+  max-width: 100%;
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  @for $i from 1 through $grid__cols {
+    .col-#{$i} {
+      flex-basis: calc(100 / ($grid__cols / $i)) * 1%;
+    }
+  }
+  @media screen and (min-width: ($grid__bp--sm * 1px)) {
+    @for $i from 1 through $grid__cols {
+      .col-sm-#{$i} {
+        flex-basis: calc(100 / ($grid__cols / $i)) * 1%;
+      }
+    }
+  }
+  @media screen and (min-width: ($grid__bp--md * 1px)) {
+    @for $i from 1 through $grid__cols {
+      .col-md-#{$i} {
+        flex-basis: calc(calc(100 / ($grid__cols / $i)) * 1% - 5px);
+      }
+    }
+  }
+  @media screen and (min-width: ($grid__bp--lg * 1px)) {
+    @for $i from 1 through $grid__cols {
+      .col-lg-#{$i} {
+        flex-basis: calc(calc(100 / ($grid__cols / $i)) * 1% - 5px);
+      }
+    }
+  }
+  @media screen and (min-width: ($grid__bp--xlg * 1px)) {
+    @for $i from 1 through $grid__cols {
+      .col-xlg-#{$i} {
+        flex-basis: calc(calc(100 / ($grid__cols / $i)) * 1% - 8px);
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@import "./helpers/color";
+
+.coming-soon-block {
+  height: calc(100vh - 180px);
+  min-height: 400px;
+
+  .coming-soon-icon {
+    background-image: url("~@/assets/images/coming-soon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80px 80px;
+    height: 80px;
+    width: 80px;
+  }
+
+  h2 {
+    color: $gray1;
+    font-family: "Exo2-Regular", sans-serif;
+    font-size: 40px;
+    line-height: 48px;
+    padding-top: 14px;
+    text-align: center;
+  }
+
+  p {
+    color: $gray3;
+    font-family: "Exo2-Light", sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 180px;
+    max-width: 313px;
+    padding-top: 20px;
+    text-align: center;
+  }
+}

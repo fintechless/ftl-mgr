@@ -1,0 +1,163 @@
+@import "./helpers/color";
+
+.profile-panel-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 30;
+
+  .blur {
+    background: rgb(222 222 222 / 35%);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 20;
+  }
+
+  .profile-panel {
+    align-items: center;
+    background: $white;
+    box-shadow: -15px 0 31px rgb(0 0 0 / 3.64%), -4px 0 6.9242px rgb(0 0 0 / 5.36%);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    right: -360px;
+    top: 0;
+    transition: right ease-in-out 0.3s;
+    width: 360px;
+    z-index: 30;
+
+    &.show {
+      right: 0;
+      transition: right ease-in-out 0.3s;
+    }
+
+    .panel-header {
+      background: $green3;
+      height: 120px;
+      position: relative;
+      width: 100%;
+
+      .close-icon-container {
+        background: $white;
+        border: 1px solid $gray5;
+        border-radius: 2px;
+        cursor: pointer;
+        display: flex;
+        height: 32px;
+        justify-content: center;
+        position: absolute;
+        right: 24px;
+        top: 24px;
+        width: 32px;
+
+        .close-icon {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .profile-img {
+      background: $green3;
+      border: 4px solid $white;
+      border-radius: 50%;
+      margin-top: -44px;
+      z-index: 1;
+
+      .img-container {
+        align-items: center;
+        display: flex;
+        height: 80px;
+        justify-content: center;
+        width: 80px;
+      }
+    }
+
+    .user-name {
+      color: $gray1;
+      font-family: "Exo2-Regular", sans-serif;
+      font-size: 18px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .user-email {
+      color: $gray3;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .user-role {
+      background: $orange2;
+      border-radius: 2px;
+      color: $orange;
+      display: flex;
+      font-family: "Exo2-Regular", sans-serif;
+      font-size: 10px;
+      justify-content: space-between;
+      letter-spacing: 0.04em;
+      padding: 4px 8px;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    .logout-btn {
+      align-items: center;
+      border: 1px solid $red;
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex;
+      height: 32px;
+      margin-top: 10px;
+      padding: 0 12px;
+
+      .btn-title {
+        color: $gray1;
+        font-family: "Exo2-Regular", sans-serif;
+        font-size: 14px;
+        margin-left: 8.5px;
+      }
+    }
+
+    .options {
+      border-top: 1px solid $gray5;
+      margin-top: 40px;
+      padding-left: 5%;
+      padding-top: 14px;
+      width: 100%;
+
+      .option-item {
+        cursor: pointer;
+        display: flex;
+        margin: 22px 7px;
+
+        .img {
+          opacity: 0.8;
+        }
+
+        .option-title {
+          color: $gray1;
+          font-family: "Exo2-Regular", sans-serif;
+          font-size: 14px;
+          line-height: 23px;
+          margin-left: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .profile-panel-container {
+    .profile-panel {
+      width: 100vw;
+    }
+  }
+}

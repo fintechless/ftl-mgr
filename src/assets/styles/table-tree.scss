@@ -1,0 +1,449 @@
+@import "./helpers/color";
+$col-1-width: 30%;
+$col-2-width: 30%;
+$col-3-width: 20vw;
+$col-4-width: 5%;
+
+.slider-body {
+  .target-col {
+    margin-top: 20px;
+    padding: 5px;
+    width: 100%;
+
+    .target-row {
+      position: relative;
+
+      .flex-container {
+        align-items: center;
+        display: flex;
+        height: 30px;
+        padding-left: 10px;
+        transition: all 0.3s ease-in-out;
+
+        &.hidden {
+          height: 0;
+          opacity: 0;
+          overflow: hidden;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .cell-2-el {
+          color: $gray2;
+          font-family: "Exo2-Light", sans-serif;
+          font-size: 14px;
+          line-height: 40px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+          &.col-1 {
+            width: 55%;
+          }
+
+          &.col-text-input {
+            padding: 0;
+            padding-right: 5%;
+            width: 45%;
+          }
+
+          &.col-2 {
+            padding-right: 10%;
+            width: 33%;
+          }
+
+          &.col-select-input {
+            padding: 0;
+            padding-left: 9%;
+            width: 35%;
+          }
+        }
+
+        .save-icon-background {
+          cursor: pointer;
+          height: 20px;
+          left: 15px;
+          opacity: 0.7;
+          opacity: 0.8;
+          position: relative;
+          width: 20px;
+
+          &.disabled {
+            pointer-events: none;
+          }
+
+          .save-icon {
+            background: $green;
+            content: "";
+            display: block;
+            height: 100%;
+            left: 50%;
+            mask-image: url("~@/assets/images/confirm-icon.png");
+            mask-position: center;
+            mask-repeat: no-repeat;
+            mask-size: 100%;
+            pointer-events: none;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+
+            &.disabled {
+              background: $gray4;
+            }
+          }
+        }
+
+        .close-icon-background {
+          border: 0;
+          border: 1px solid $red;
+          border-radius: 50%;
+          cursor: pointer;
+          height: 20px;
+          left: 20px;
+          position: relative;
+          width: 20px;
+
+          .close-icon {
+            background: $red;
+            content: "";
+            display: block;
+            height: 75%;
+            left: 50%;
+            mask-image: url("~@/assets/images/plus.svg");
+            mask-position: center;
+            mask-repeat: no-repeat;
+            mask-size: 100%;
+            pointer-events: none;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            width: 75%;
+          }
+        }
+
+        .btn-container {
+          display: flex;
+          width: 12%;
+
+          .delete-icon-background {
+            border: 0;
+            border: 1px solid $red;
+            border-radius: 50%;
+            cursor: pointer;
+            height: 20px;
+            left: -8px;
+            opacity: 0.7;
+            position: relative;
+            top: 2px;
+            width: 20px;
+
+            &.disabled {
+              opacity: 0.25;
+              pointer-events: none;
+            }
+
+            .delete-icon {
+              background: $red;
+              content: "";
+              display: block;
+              height: 75%;
+              left: 50%;
+              mask-image: url("~@/assets/images/plus.svg");
+              mask-position: center;
+              mask-repeat: no-repeat;
+              mask-size: 100%;
+              pointer-events: none;
+              position: absolute;
+              top: 50%;
+              transform: translate(-50%, -50%) rotate(45deg);
+              width: 75%;
+            }
+          }
+
+          .plus-icon-background {
+            border: 0;
+            border: 1px solid $green;
+            border-radius: 50%;
+            cursor: pointer;
+            height: 20px;
+            left: -8px;
+            opacity: 0.7;
+            position: relative;
+            top: 2px;
+            width: 20px;
+
+            .plus-icon {
+              background: $green;
+              content: "";
+              display: block;
+              height: 75%;
+              left: 50%;
+              mask-image: url("~@/assets/images/plus.svg");
+              mask-position: center;
+              mask-repeat: no-repeat;
+              mask-size: 100%;
+              opacity: 1;
+              pointer-events: none;
+              position: absolute;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              transition: all 0.2s ease-in-out;
+              width: 75%;
+            }
+
+            &.hidden {
+              opacity: 0;
+              pointer-events: none;
+              transition: all 0.2s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.msg-panel > .tree-container {
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.tree-container {
+  border-left: 1px solid $gray5;
+  margin-left: -1px;
+
+  &.last-el {
+    border: none !important;
+  }
+
+  .row {
+    display: flex;
+    height: 42px;
+    position: relative;
+
+    .horizontal-line {
+      background-color: $gray5;
+      height: 1px;
+      margin-left: 5px;
+      position: absolute;
+      top: 50%;
+      width: 10px;
+
+      &.leaf {
+        width: 20px;
+      }
+    }
+
+    .row-cell-1 {
+      display: flex;
+      margin-left: -5px;
+      position: relative;
+      width: calc(100% - 5px);
+
+      .cell {
+        color: $gray1;
+        font-family: "Exo2-Light", sans-serif;
+        font-size: 14px;
+        line-height: 40px;
+        position: relative;
+        white-space: nowrap;
+
+        &.col-1 {
+          display: flex;
+          width: $col-1-width;
+
+          .first-el {
+            background: $gray5;
+            height: 30px;
+            left: 4px;
+            overflow: visible;
+            position: absolute;
+            top: -9px;
+            width: 1px;
+          }
+
+          .last-el-line {
+            background: $gray5;
+            height: 21px;
+            left: 5px;
+            position: absolute;
+            top: 0;
+            width: 1px;
+          }
+
+          p {
+            padding-left: 35px;
+            position: relative;
+
+            &.first {
+              border: none !important;
+            }
+
+            &.last {
+              border: none !important;
+            }
+
+            .rectangle {
+              align-items: center;
+              border: 1px solid $gray4;
+              cursor: pointer;
+              display: flex;
+              height: 10px;
+              justify-content: center;
+              left: 21px;
+              position: absolute;
+              top: 16px;
+              width: 10px;
+
+              .icon {
+                color: $gray3;
+                font-size: 15px;
+                line-height: 10px;
+                margin-top: -3px;
+                position: relative;
+              }
+            }
+          }
+
+          .icon-background {
+            background-color: hsl(4deg 0% 0% / 0%);
+            border: 0;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 2px;
+            margin-top: -8px;
+            position: relative;
+            width: 11px !important;
+
+            .fade-enter-active,
+            .fade-leave-active {
+              transition: opacity 0.3s ease-in-out;
+            }
+
+            .fade-enter-from,
+            .fade-leave-to {
+              opacity: 0;
+            }
+
+            .hover-info {
+              background: $white;
+              border: 1px solid $gray5;
+              border-radius: 5px;
+              bottom: 72%;
+              box-shadow: -2px 1px 5px $gray5;
+              left: -90px;
+              line-height: normal;
+              max-width: 400px;
+              padding: 10px;
+              position: absolute;
+              text-align: justify;
+              white-space: normal;
+              width: max-content;
+              z-index: 3;
+
+              .arrow-down {
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 6px solid $gray5;
+                height: 0;
+                left: 89px;
+                position: absolute;
+                top: 100%;
+                width: 0;
+              }
+            }
+
+            .help-icon {
+              background: $gray3;
+              content: "";
+              display: block;
+              height: 100%;
+              left: 50%;
+              mask-image: url("~@/assets/images/help-circle.svg");
+              mask-position: center;
+              mask-repeat: no-repeat;
+              mask-size: 100%;
+              pointer-events: none;
+              position: absolute;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              width: 100%;
+            }
+          }
+        }
+
+        &.col-2 {
+          width: $col-2-width;
+        }
+
+        p {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .input-container {
+        min-width: 155px;
+        padding-top: 6px;
+        position: absolute;
+        right: 10px;
+        width: $col-3-width !important;
+      }
+
+      .edit-icon {
+        background: $gray3;
+        content: "";
+        cursor: pointer;
+        height: 40px;
+        mask-image: url("~@/assets/images/edit.svg");
+        mask-position: center;
+        mask-repeat: no-repeat;
+        opacity: 0.6;
+        position: absolute;
+        right: -15px;
+        top: 10px;
+        width: 45px;
+        zoom: 0.7;
+
+        &:hover {
+          background: $gray1;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .tree-container {
+    .row {
+      .row-cell-1 {
+        .col-2 {
+          display: none;
+        }
+
+        .input-container {
+          min-width: 160px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .tree-container {
+    .row {
+      zoom: 0.6;
+
+      .row-cell-1 {
+        .col-1 {
+          width: 33% !important;
+
+          .icon-background {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,178 @@
+@import "./helpers/color";
+
+.card-container {
+  background: $white;
+  border: 1px solid $gray5;
+  border-radius: 2px;
+  height: 160px;
+  margin: 5px;
+  padding: 20px;
+  position: relative;
+  width: calc(25% - 10px);
+
+  .icon-background {
+    align-items: center;
+    background-color: $green3;
+    border-radius: 22px;
+    display: flex;
+    height: 44px;
+    justify-content: center;
+    width: 44px;
+
+    .title-icon {
+      background-color: $green2;
+      content: "";
+      height: 44px;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      width: 44px;
+
+      &.profile {
+        mask-image: url("~@/assets/images/user.svg");
+      }
+    }
+  }
+
+  .image-profile {
+    align-items: center;
+    border-radius: 22px;
+    display: flex;
+    height: 44px;
+    justify-content: center;
+    width: 44px;
+
+    img {
+      border-radius: 22px;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  .name {
+    color: $gray1;
+    font-family: "Exo2-Regular", sans-serif;
+    font-size: 16px;
+    height: 23px;
+    margin: 13px 0;
+    white-space: nowrap;
+  }
+
+  .email {
+    color: $gray3;
+    font-family: "Exo2-Light", sans-serif;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .back-icon {
+    background-color: $gray5;
+    background-size: contain;
+    bottom: 0;
+    content: "";
+    height: 80px;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    position: absolute;
+    right: 0;
+    width: 80px;
+
+    &.profile {
+      mask-image: url("~@/assets/images/user-big.svg");
+    }
+  }
+
+  .role {
+    background: $orange2;
+    border-radius: 2px;
+    color: $orange;
+    display: flex;
+    font-family: "Exo2-Regular", sans-serif;
+    font-size: 10px;
+    justify-content: space-between;
+    letter-spacing: 0.04em;
+    padding: 4px 8px;
+    position: absolute;
+    right: 20px;
+    text-transform: uppercase;
+    top: 20px;
+    width: 83px;
+
+    &.pointer {
+      cursor: pointer;
+    }
+
+    .chevron {
+      margin-top: -1px;
+      opacity: 0.7;
+      transform: rotate(180deg);
+      transition: all 0.3s ease-in-out;
+
+      &.opened {
+        transform: rotate(0deg);
+      }
+    }
+
+    &.owner {
+      background: $green3;
+      color: $green2;
+      padding: 4px 12px;
+      width: fit-content;
+    }
+
+    &.fill {
+      padding: 4px 12px;
+      pointer-events: none;
+      width: fit-content;
+    }
+  }
+
+  .dropdown-container {
+    border: 1px solid $gray5;
+    border-bottom: none;
+    border-radius: 2px;
+    box-shadow: 0 15px 31px rgb(0 0 0 / 3.64%), 0 3.3504px 6.9242px rgb(0 0 0 / 5.36%);
+    position: absolute;
+    right: 20px;
+    text-align: left;
+    top: 46px;
+    width: 83px;
+    z-index: 5;
+
+    .option {
+      background: $white;
+      border-bottom: 1px solid $gray5;
+      color: $gray1;
+      cursor: pointer;
+      font-family: "Exo2-Regular", sans-serif;
+      font-size: 14px;
+      padding: 7px;
+
+      &:hover {
+        background: $gray6;
+      }
+    }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .card-container {
+    width: calc(100% - 10px) !important;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .card-container {
+    width: calc(50% - 10px);
+  }
+}

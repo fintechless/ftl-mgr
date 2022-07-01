@@ -1,0 +1,146 @@
+@import "./helpers/color";
+
+.filter-bar {
+  align-items: center;
+  background: $white;
+  border: 1px solid $gray5;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  display: flex;
+  height: 60px;
+  margin-top: 10px;
+  position: relative;
+
+  .flex-title {
+    color: $gray1;
+    font-family: "Exo2-Regular", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    padding: 0 20px;
+  }
+
+  .border {
+    background-color: $gray5;
+    height: 20px;
+    width: 1px;
+  }
+
+  .flex-filter {
+    border-bottom: 2px solid $white;
+    color: $gray3;
+    cursor: pointer;
+    font-family: "Exo2-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 100%;
+    line-height: 17px;
+    padding: 0 20px;
+    vertical-align: middle;
+
+    p {
+      margin-top: 2px;
+    }
+
+    &.selected {
+      background-color: rgb(39 174 96 / 5%);
+      border-bottom: 2px solid $green;
+      color: $gray1;
+      transition: all 0.4s ease-in-out;
+    }
+  }
+
+  .date-range {
+    background: $white;
+    border: 1px solid $gray5;
+    border-radius: 2px;
+    cursor: pointer;
+    height: 32px;
+    padding: 0 9px;
+    position: absolute;
+    right: 20px;
+
+    &.active {
+      border: 1px solid $gray3;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .title {
+      color: $gray1;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 14px;
+      text-align: justify;
+      white-space: nowrap;
+      width: 63px;
+    }
+
+    .chevron {
+      transform: rotate(180deg);
+      transition: all 0.3s ease-in-out;
+
+      &.opened {
+        transform: rotate(0deg);
+      }
+    }
+  }
+}
+
+.charts-container {
+  border: 1px solid $gray5;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top: none;
+  display: flex;
+  position: relative;
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .charts-container {
+    zoom: 0.7;
+  }
+
+  .filter-bar {
+    padding-right: 20px;
+
+    .flex-title {
+      padding: 0 10px;
+    }
+
+    .flex-filter {
+      padding: 0 10px;
+    }
+
+    .date-range {
+      background: none;
+      border: none;
+      padding: 0;
+      right: 10px;
+
+      &.active {
+        border: none;
+      }
+
+      .title {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .charts-container {
+    flex-direction: column;
+    justify-content: center !important;
+    width: 100%;
+  }
+}

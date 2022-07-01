@@ -1,0 +1,55 @@
+@import "./helpers/color";
+
+.card-container {
+  background: $white;
+  border: 1px solid $gray5;
+  border-radius: 2px;
+  border-top: none;
+  height: 96px;
+  min-width: 180px;
+  position: relative;
+  width: 100%;
+
+  .top-border {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    height: 4px;
+    margin-left: -1px;
+    width: calc(100% + 2px);
+  }
+
+  .content {
+    margin-left: 30px;
+
+    .title {
+      color: $gray3;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 17px;
+      margin-top: 16px;
+    }
+
+    .number {
+      color: $gray1;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 24px;
+      line-height: 29px;
+      margin-top: 14px;
+
+      .small {
+        font-size: 14px;
+      }
+      .gray {
+        color: $gray3;
+      }
+    }
+
+    .card-icon {
+      position: absolute;
+      right: 30px;
+      top: 17px;
+    }
+  }
+}

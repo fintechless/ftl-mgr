@@ -1,0 +1,380 @@
+@import "./helpers/color";
+
+.categories-container {
+  padding: 18px 18px 0;
+  position: relative;
+
+  .create-btn {
+    border-radius: 2px;
+    display: flex;
+    font-family: "Exo2-Regular", sans-serif;
+    font-size: 14px;
+    line-height: 100%;
+    padding: 8px 12px;
+    position: absolute;
+    right: 16px;
+    text-align: center;
+    top: -47px;
+    width: fit-content;
+
+    &.enabled {
+      background: $green2;
+      color: $white;
+      cursor: pointer;
+    }
+
+    &.disabled {
+      background-color: $gray3;
+      color: $white;
+      cursor: not-allowed;
+    }
+  }
+
+  .categories {
+    background: $gray6;
+    border: 1px solid $gray5;
+    border-radius: 2px;
+    margin-bottom: 18px;
+
+    .ms-header {
+      align-items: center;
+      display: flex;
+      margin-left: 20px;
+      margin-top: 14px;
+
+      .icon-container {
+        align-items: center;
+        background-color: $white;
+        border: 1px solid $gray5;
+        border-radius: 2px;
+        display: flex;
+        height: 32px;
+        justify-content: center;
+        margin-right: 10px;
+        width: 32px;
+
+        .icon {
+          content: "";
+          height: 17px;
+          width: 22px;
+
+          &.client {
+            background-image: url("~@/assets/images/users.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 24px 19px;
+          }
+
+          &.data {
+            background-image: url("~@/assets/images/cat-data.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.4;
+            zoom: 1.2;
+          }
+
+          &.infra {
+            background-image: url("~@/assets/images/cat-infra.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.5;
+          }
+
+          &.kubernetes {
+            background-image: url("~@/assets/images/k8s.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            zoom: 1.22;
+          }
+
+          &.dynamo {
+            background-image: url("~@/assets/images/dynamo-icon.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            zoom: 1.25;
+          }
+
+          &.http {
+            background-image: url("~@/assets/images/api-gateway-icon.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            zoom: 1.2;
+          }
+
+          &.s3 {
+            background-image: url("~@/assets/images/s3-logo.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            zoom: 1.2;
+          }
+        }
+      }
+
+      .name {
+        color: $gray1;
+        font-family: "Exo2-Medium", sans-serif;
+        font-size: 16px;
+        margin-right: 8px;
+      }
+
+      .count {
+        color: $green2;
+        font-family: "Exo2-Medium", sans-serif;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.edit-container {
+  max-width: 630px;
+  padding: 20px;
+
+  .name {
+    margin-bottom: 20px;
+  }
+
+  .description {
+    border-bottom: 1px solid $gray5;
+    color: #828282;
+    font-family: "Exo2-Light", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+  }
+
+  .inputs-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+
+    .rectangle {
+      border: 1px solid $gray5;
+      border-radius: 2px;
+      cursor: pointer;
+      height: 20px;
+      margin-top: 13px;
+      text-align: center;
+      width: 20px;
+
+      .icon {
+        background-color: $red;
+        content: "";
+        height: 17px;
+        mask-image: url("~@/assets/images/check-white.svg");
+        mask-position: center;
+        mask-repeat: no-repeat;
+        width: 20px;
+      }
+
+      &.disabled {
+        border: 0px solid $gray5;
+        cursor: default;
+      }
+    }
+
+    .input-box {
+      color: $gray1;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 12px;
+      position: relative;
+      width: 45%;
+
+      &.box-1 {
+        width: 30%;
+      }
+
+      &.box-2 {
+        width: 28%;
+      }
+
+      &.box-3 {
+        width: 29%;
+      }
+
+      label {
+        font-family: "Exo2-Medium", sans-serif;
+        font-size: 12px;
+        line-height: 14px;
+        margin-bottom: 12px;
+      }
+
+      .text-input {
+        border: 1px solid $gray5;
+        border-radius: 2px;
+        box-sizing: border-box;
+        font-family: "Exo2-Light", sans-serif;
+        font-size: 14px;
+        height: 44px;
+        line-height: 17px;
+        padding-left: 10px;
+        padding-right: 12px;
+        width: 100%;
+      }
+
+      .text-select {
+        border: 1px solid $gray5;
+        border-radius: 2px;
+        box-sizing: border-box;
+        color: $gray3;
+        font-family: "Exo2-Light", sans-serif;
+        font-size: 14px;
+        height: 44px;
+        line-height: 44px;
+        overflow: hidden;
+        padding-left: 12px;
+        padding-right: 15px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+
+        &.selected {
+          color: $gray1;
+        }
+      }
+
+      .chevron {
+        bottom: 13px;
+        margin-left: 5px;
+        margin-top: -1px;
+        opacity: 0.5;
+        position: absolute;
+        right: 12px;
+        transform: rotate(180deg);
+        transition: all 0.3s ease-in-out;
+
+        &.opened {
+          transform: rotate(0deg);
+        }
+      }
+
+      .dropdown-container {
+        background: $white;
+        border: 1px solid $gray5;
+        border-bottom: none;
+        border-radius: 2px;
+        box-shadow: 1px 1px 5px 1px $gray5;
+        position: absolute;
+        right: 0;
+        text-align: left;
+        top: 100%;
+        width: 100%;
+        z-index: 1;
+
+        .option {
+          background: $white;
+          border-bottom: 1px solid $gray5;
+          color: $gray1;
+          cursor: pointer;
+          font-family: "Exo2-Regular", sans-serif;
+          font-size: 14px;
+          padding: 11px;
+
+          &:hover {
+            background: $gray6;
+          }
+        }
+      }
+
+      .fade-enter-active,
+      .fade-leave-active {
+        transition: opacity 0.5s ease;
+      }
+
+      .fade-enter-from,
+      .fade-leave-to {
+        opacity: 0;
+      }
+    }
+  }
+
+  .btn-container {
+    display: flex;
+
+    .create-btn {
+      align-items: center;
+      border: 1px solid $green2;
+      border-radius: 2px;
+      color: $gray1;
+      cursor: pointer;
+      display: flex;
+      font-family: "Exo2-Regular", sans-serif;
+      font-size: 14px;
+      height: 32px;
+      justify-content: center;
+      line-height: 44px;
+      margin-top: 5px;
+      text-align: center;
+      width: 116px;
+
+      .create-icon {
+        background-color: $green2;
+        content: "";
+        height: 20px;
+        margin-right: 5px;
+        mask-image: url("~@/assets/images/plus.svg");
+        mask-position: center;
+        mask-repeat: no-repeat;
+        width: 20px;
+      }
+    }
+
+    .remove-btn {
+      align-items: center;
+      border: 1px solid $red;
+      border-radius: 2px;
+      color: $gray1;
+      cursor: pointer;
+      display: flex;
+      font-family: "Exo2-Regular", sans-serif;
+      font-size: 14px;
+      height: 32px;
+      justify-content: center;
+      line-height: 44px;
+      margin-left: 15px;
+      margin-top: 5px;
+      text-align: center;
+      transition: all 0.2s ease-in-out;
+      width: 105px;
+
+      .remove-icon {
+        background-color: $red;
+        content: "";
+        height: 20px;
+        margin-right: 11px;
+        mask-image: url("~@/assets/images/trash.svg");
+        mask-position: center;
+        mask-repeat: no-repeat;
+        width: 20px;
+      }
+
+      &.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .edit-container {
+    padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .edit-container {
+    height: 100%;
+    max-width: none;
+  }
+}

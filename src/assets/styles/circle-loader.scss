@@ -1,0 +1,37 @@
+@import "./helpers/color";
+
+.loader-container {
+  align-items: center;
+  background: rgb(255 255 255 / 80%);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 35;
+
+  &.component {
+    height: 100% !important;
+    position: absolute !important;
+    width: 100% !important;
+  }
+
+  .loader {
+    animation: rotation 1s linear infinite;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: inline-block;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

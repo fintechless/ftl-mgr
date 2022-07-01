@@ -1,0 +1,196 @@
+@import "./helpers/color";
+
+.microservice-slider-container {
+  align-items: center;
+  display: flex;
+  height: 126px;
+  margin: 20px 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  scroll-snap-type: x proximity;
+  width: 100%;
+
+  .scroll-btn {
+    align-items: center;
+    background: rgb(255 255 255 / 90%);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    overflow: hidden;
+    position: absolute;
+    transition: width ease 0.4s;
+    width: 60px;
+    z-index: 5;
+
+    &.hidden {
+      overflow: hidden;
+      transition: width ease 0.4s;
+      width: 0;
+    }
+
+    &.l {
+      left: 0;
+      transform: rotate(180deg);
+    }
+
+    &.r {
+      right: 0;
+    }
+
+    .btn {
+      background-color: $white !important;
+      border: 1px solid $gray5;
+      cursor: pointer;
+      height: 32px;
+      width: 32px;
+
+      .chevron {
+        background-color: $gray1;
+        color: $gray1;
+        content: "";
+        height: 32px;
+        mask-image: url("~@/assets/images/chevron_right.svg");
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: 10px 10px;
+        width: 32px;
+      }
+    }
+  }
+
+  .microservice-box {
+    background: $white;
+    border: 1px solid $gray5;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 126px;
+    padding: 20px;
+    width: 280px;
+
+    .microservice-box-header {
+      .icon-background {
+        background-color: $green3;
+        height: 20px;
+        margin-right: 8px;
+        width: 20px;
+
+        .card-icon {
+          background-color: $green2;
+          content: "";
+          height: 12px;
+          margin: 0 0.125rem;
+          mask-position: center;
+          mask-repeat: no-repeat;
+          mask-size: contain;
+          padding: 6px;
+          width: 17px;
+
+          &.microservice {
+            mask-image: url("~@/assets/images/box.svg");
+          }
+        }
+      }
+
+      h4 {
+        color: $gray3;
+        font-family: "Exo2-Light", sans-serif;
+        font-size: 12px;
+        line-height: 14px;
+        width: 240px;
+      }
+
+      .btn-delete {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        display: none;
+        height: 20px;
+        width: 20px;
+
+        .icon {
+          background-color: $red;
+          content: "";
+          height: 12px;
+          margin: 0 0.125rem;
+          mask-position: center;
+          mask-repeat: no-repeat;
+          mask-size: contain;
+          padding: 6px;
+          width: 17px;
+
+          &.delete {
+            mask-image: url("~@/assets/images/trash.svg");
+          }
+        }
+      }
+    }
+
+    .microservice-box-body {
+      color: $gray1;
+      font-family: "Exo2-Medium", sans-serif;
+      font-size: 16px;
+      line-height: 19px;
+      margin-top: 12px;
+    }
+
+    &.microservice {
+      background-image: url("~@/assets/images/box-bg.png");
+      background-position: right bottom;
+      background-repeat: no-repeat;
+      background-size: 30%;
+    }
+
+    &.active,
+    &:hover {
+      &.microservice {
+        background: $green4;
+        background-image: url("~@/assets/images/box-bg-active.png");
+        background-position: right bottom;
+        background-repeat: no-repeat;
+        background-size: 30%;
+        border: 1px solid $green2;
+        border-radius: 2px;
+      }
+    }
+
+    &:hover {
+      .btn-delete {
+        align-items: center;
+        background-color: #dbf3e6;
+        border-radius: 2px;
+        display: flex;
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+
+  .add-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    height: 24px;
+    margin: 0 14px;
+    width: 24px;
+
+    img {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  .add-btn:first-child {
+    margin-left: 20px;
+  }
+
+  .add-btn:last-child {
+    margin-right: 20px;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -1,0 +1,4 @@
+component:
+  name: aws_s3_deploy
+  dependsOn:
+    - aws_s3_website

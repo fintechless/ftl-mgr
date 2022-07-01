@@ -1,0 +1,118 @@
+@import "./helpers/color";
+
+.popup-container {
+  background: $white;
+  border: 1px solid $gray5;
+  border-radius: 2px;
+  box-shadow: 0 15px 31px rgb(0 0 0 / 3.64%), 0 3.3504px 6.9242px rgb(0 0 0 / 5.36%);
+  left: 40px;
+  max-width: 80%;
+  min-width: 500px;
+  overflow: hidden;
+  position: absolute;
+  top: 58px;
+
+  .el-container {
+    align-items: center;
+    display: flex;
+    height: 80px;
+    overflow: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+
+    &.border-top {
+      border-top: 1px solid $gray6;
+    }
+
+    .icon-container {
+      align-items: center;
+      background: $green3;
+      display: flex;
+      height: 40px;
+      justify-content: space-around;
+      width: 40px;
+
+      .el-icon {
+        background-color: $green2;
+        content: "";
+        height: 40px;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        width: 40px;
+
+        &.icon-settings {
+          mask-image: url("~@/assets/images/settings.svg");
+        }
+
+        &.icon-transaction {
+          mask-image: url("~@/assets/images/transactions.svg");
+        }
+
+        &.icon-message {
+          mask-image: url("~@/assets/images/messages.svg");
+        }
+
+        &.icon-microservice {
+          mask-image: url("~@/assets/images/microservice.svg");
+        }
+      }
+    }
+
+    .info {
+      margin-left: 16px;
+
+      .type {
+        color: $gray3;
+        font-family: "Exo2-Light", sans-serif;
+        font-size: 12px;
+      }
+
+      .text {
+        align-items: center;
+        display: flex;
+
+        .title {
+          color: $gray1;
+          font-family: "Exo2-Medium", sans-serif;
+          font-size: 16px;
+          white-space: nowrap;
+        }
+
+        .description {
+          align-items: center;
+          color: $gray3;
+          display: flex;
+          font-family: "Exo2-Light", sans-serif;
+          font-size: 12px;
+          line-height: 0px;
+          margin-left: 4px;
+          white-space: nowrap;
+
+          .green {
+            align-items: center;
+            background-color: $green3 !important;
+            color: $green !important;
+            display: flex;
+            height: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .popup-container {
+    min-width: 65%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .popup-container {
+    left: 1%;
+    max-width: none;
+    min-width: auto !important;
+    width: 98% !important;
+  }
+}

@@ -1,0 +1,118 @@
+@import "./helpers/color";
+$col-1-width: 30%;
+$col-2-width: 40%;
+$col-3-width: 25%;
+
+.msg-panel {
+  border: 1px solid $gray5;
+  border-radius: 2px;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  margin: 30px 0;
+  min-height: 530px;
+  position: relative;
+  width: 100%;
+
+  .table-header {
+    border-bottom: 1px solid $gray5;
+    display: flex;
+    flex: 0 1 auto;
+    height: 45px;
+    padding-left: 20px;
+
+    .sub-cell-1 {
+      display: flex;
+      line-height: 45px;
+      width: 100%;
+
+      .col {
+        color: $gray2;
+        font-family: "Exo2-Regular", sans-serif;
+        font-size: 16px;
+        white-space: nowrap;
+
+        &.col-1 {
+          padding-left: 14px;
+          width: $col-1-width;
+        }
+
+        &.col-2 {
+          padding-left: 10px;
+          width: $col-2-width;
+        }
+      }
+
+      .inputs-col {
+        color: $gray2;
+        font-family: "Exo2-Regular", sans-serif;
+        font-size: 16px;
+        padding-left: 10px;
+        width: $col-3-width;
+      }
+    }
+  }
+
+  .table-footer {
+    border-top: 1px solid $gray5;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+
+    .btn {
+      align-items: center;
+      background-color: $green2;
+      border: none;
+      color: $white;
+      cursor: pointer;
+      display: flex;
+      font-family: "Exo2-Medium", sans-serif;
+      font-size: 13px;
+      height: 30px;
+      justify-content: center;
+      line-height: 16px;
+      padding: 0 24px;
+      text-align: center;
+      white-space: nowrap;
+
+      &.disabled {
+        background-color: $gray3;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .msg-panel {
+    .table-header {
+      .sub-cell-1 {
+        .col-1 {
+          font-size: 11px;
+          white-space: nowrap;
+        }
+
+        .inputs-col {
+          font-size: 11px;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .msg-panel {
+    .table-header {
+      .sub-cell-1 {
+        .col-2 {
+          visibility: hidden;
+        }
+
+        .inputs-col {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}

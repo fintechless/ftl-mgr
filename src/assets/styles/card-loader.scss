@@ -1,0 +1,418 @@
+@import "./helpers/color";
+
+.slide-fade-enter-active {
+  transition: all 0.4s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.05s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.loader-panel {
+  padding: 20px 10px;
+
+  .cards-block {
+    column-gap: 10px;
+    justify-content: left;
+    row-gap: 20px;
+
+    .no-data {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .list-enter-active {
+      transition: all 0.5s ease;
+    }
+
+    .list-leave-active {
+      transition: all 0s ease;
+    }
+
+    .list-enter-from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .list-leave-to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    .fade-enter-active {
+      transition: all 0.5s ease;
+    }
+
+    .fade-leave-active {
+      transition: all 0s ease;
+    }
+
+    .fade-enter-from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .fade-leave-to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    @media screen and (min-width: 992px) {
+      .col-lg-3 {
+        flex-basis: calc(25% - 10px);
+      }
+    }
+  }
+}
+
+.card {
+  background: $white;
+  border: 1px solid $gray5;
+  border-radius: 2px;
+  height: 172px;
+  overflow: hidden;
+  padding: 23px 20px 20px;
+  position: relative;
+
+  &.pointer-none {
+    pointer-events: none;
+  }
+
+  &.with-actions {
+    &:hover {
+      background: #f4fbf7 !important;
+      background-position: right bottom;
+      background-repeat: no-repeat;
+      background-size: 27%;
+      border: 1px solid $green2;
+      height: 172px !important;
+      padding-top: 23px;
+
+      .card-top {
+        .card-toggle {
+          .toggle-label {
+            margin-top: 3px;
+          }
+        }
+      }
+
+      &.active {
+        padding-top: 20px;
+
+        .card-top {
+          margin-top: 3px;
+
+          .card-toggle {
+            .toggle-label {
+              margin-top: 3px;
+            }
+          }
+        }
+      }
+
+      .card-actions {
+        display: flex;
+      }
+
+      .card-description {
+        opacity: 0.3;
+      }
+
+      &.transaction {
+        background-image: url("~@/assets/images/transaction-bg-active.png");
+      }
+
+      &.message {
+        background-image: url("~@/assets/images/message-bg-active.png");
+      }
+
+      &.microservice {
+        background-image: url("~@/assets/images/box-bg-active.png");
+      }
+
+      &.clients {
+        background-color: $white;
+        background-image: url("~@/assets/images/client-bg.svg");
+        background-position: bottom 10px right 18px;
+      }
+
+      &.aws {
+        background-color: $white;
+        background-image: url("~@/assets/images/aws-bg.svg");
+        background-position: bottom 18px right 18px !important;
+      }
+
+      &.gcp {
+        background-color: $white;
+        background-image: url("~@/assets/images/gcp-bg.svg");
+        background-position: bottom 18px right 18px !important;
+      }
+
+      &.azure {
+        background-color: $white;
+        background-image: url("~@/assets/images/azure-bg.svg");
+        background-position: bottom 18px right 18px !important;
+      }
+    }
+  }
+
+  &.active {
+    border-top: 4px solid $green2;
+    padding-top: 20px !important;
+
+    .card-top {
+      .card-toggle {
+        .toggle-label {
+          margin-top: 0;
+        }
+      }
+    }
+
+    &.transaction {
+      background-image: url("~@/assets/images/transaction-bg-active.png");
+    }
+
+    &.message {
+      background-image: url("~@/assets/images/message-bg-active.png");
+    }
+
+    &.microservice {
+      background-image: url("~@/assets/images/box-bg.png");
+    }
+
+    &.clients {
+      background-image: url("~@/assets/images/client-bg.svg");
+      background-position: bottom 10px right 18px;
+    }
+
+    &.aws {
+      background-image: url("~@/assets/images/aws-bg.svg");
+      background-position: bottom 18px right 18px !important;
+    }
+
+    &.gcp {
+      background-image: url("~@/assets/images/gcp-bg.svg");
+      background-position: bottom 18px right 18px !important;
+    }
+
+    &.azure {
+      background-image: url("~@/assets/images/azure-bg.svg");
+      background-position: bottom 18px right 18px !important;
+    }
+  }
+
+  .card-top {
+    height: 20px;
+    z-index: 20;
+
+    .card-toggle {
+      .toggle-label {
+        margin-top: 3px;
+      }
+    }
+
+    .icon-background {
+      background-color: $green3;
+      border-radius: 2px;
+      height: 20px;
+      margin-right: 8px;
+      width: 20px;
+
+      .card-icon {
+        background-color: $green2;
+        content: "";
+        height: 12px;
+        margin: 0 0.125rem;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: contain;
+        padding: 6px;
+        width: 12px;
+
+        &.transaction {
+          mask-image: url("~@/assets/images/refresh-cw.svg");
+        }
+
+        &.message {
+          mask-image: url("~@/assets/images/message-circle.svg");
+        }
+
+        &.provider {
+          mask-image: url("~@/assets/images/provider-icon.svg");
+        }
+
+        &.microservice {
+          mask-image: url("~@/assets/images/box.svg");
+        }
+      }
+    }
+
+    h4 {
+      color: $gray3;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 12px;
+      line-height: 14px;
+      text-transform: capitalize;
+    }
+  }
+
+  .card-name {
+    color: $gray1;
+    font-family: "Exo2-Medium", sans-serif;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 12px 0;
+    z-index: 20;
+  }
+
+  .card-description {
+    color: $gray3;
+    font-family: "Exo2-Light", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .card-actions {
+    bottom: 0;
+    display: none;
+    height: 40%;
+    left: 0;
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+    gap: 10px;
+
+    .btn {
+      align-items: center;
+      background: $white;
+      border: 1px solid $gray5;
+      border-radius: 2px;
+      box-sizing: border-box;
+      color: $gray1;
+      cursor: pointer;
+      display: flex;
+      font-family: "Exo2-Regular", sans-serif;
+      font-size: 14px;
+      height: 32px;
+      justify-content: center;
+      line-height: 16px;
+      width: 48%;
+
+      img {
+        height: 16px;
+        margin-right: 8px;
+        width: 16px;
+      }
+    }
+  }
+
+  &.transaction {
+    background-image: url("~@/assets/images/transaction-bg.png");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: 27%;
+  }
+
+  &.message {
+    background-image: url("~@/assets/images/message-bg.png");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: 27%;
+  }
+
+  &.clients {
+    background-image: url("~@/assets/images/client-bg.svg");
+    background-position: bottom 10px right 18px !important;
+    background-repeat: no-repeat;
+    background-size: 27%;
+  }
+
+  &.microservice {
+    background-image: url("~@/assets/images/box-bg.png");
+    background-position: bottom 0 right 0 !important;
+    background-repeat: no-repeat;
+    background-size: 27%;
+  }
+
+  &.aws {
+    background-image: url("~@/assets/images/aws-bg.svg");
+    background-position: bottom 18px right 18px !important;
+    background-repeat: no-repeat;
+    background-size: 27%;
+  }
+
+  &.gcp {
+    background-image: url("~@/assets/images/gcp-bg.svg");
+    background-position: bottom 18px right 18px !important;
+    background-repeat: no-repeat;
+    background-size: 27%;
+  }
+
+  &.azure {
+    background-image: url("~@/assets/images/azure-bg.svg");
+    background-position: bottom 18px right 18px !important;
+    background-repeat: no-repeat;
+    background-size: 27%;
+  }
+}
+
+.load-more {
+  background: #dbf3e6;
+  border-radius: 2px;
+  color: $green2;
+  cursor: pointer;
+  font-family: "Exo2-Regular", sans-serif;
+  font-size: 20px;
+  height: 172px;
+  line-height: 140%;
+  text-align: center;
+  width: 100%;
+
+  &.transaction {
+    background-image: url("~@/assets/images/transaction-bg-active.png");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: 27%;
+  }
+
+  &.message {
+    background-image: url("~@/assets/images/message-bg-active.png");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: 27%;
+  }
+
+  &.aws {
+    background-image: url("~@/assets/images/aws-bg-active.png");
+    background-position: bottom 20px right 20px;
+    background-repeat: no-repeat;
+    background-size: 27%;
+  }
+
+  &.clients {
+    background-image: url("~@/assets/images/peoples-bg-active.png");
+    background-position: bottom 20px right 20px;
+    background-repeat: no-repeat;
+    background-size: 27%;
+  }
+
+  &.microservice {
+    background-image: url("~@/assets/images/box-bg-active.png");
+    background-position: bottom 0 right 0;
+    background-repeat: no-repeat;
+    background-size: 27%;
+  }
+}

@@ -1,0 +1,81 @@
+@import "./helpers/color";
+
+.editor-container {
+  .files-container {
+    border-right: 1px solid #e0e0e0;
+    height: 520px;
+    min-width: 240px;
+    overflow: auto;
+    width: 240px;
+
+    .node-name {
+      align-items: center;
+      color: $gray1;
+      display: flex;
+      font-family: "Exo2-Regular", sans-serif;
+      font-size: 14px;
+      height: 20px;
+      line-height: 16px;
+
+      span {
+        cursor: pointer;
+        display: flex;
+
+        .icon {
+          background-color: $green2;
+          height: 16px;
+          margin-right: 3px;
+          mask-position: center;
+          mask-repeat: no-repeat;
+          mask-size: cover;
+          width: 16px;
+
+          &.folder {
+            mask-image: url("~@/assets/images/folder.svg");
+
+            &--open {
+              mask-image: url("~@/assets/images/open-folder.svg");
+            }
+          }
+
+          &.file {
+            mask-image: url("~@/assets/images/file.svg");
+          }
+
+          &.disabled {
+            background-color: $gray4;
+          }
+        }
+
+        .active {
+          background-color: $green3;
+        }
+
+        .disabled {
+          color: $gray4;
+        }
+      }
+    }
+  }
+
+  .editor-view {
+    flex: auto;
+    overflow: auto;
+
+    .CodeMirror {
+      font-family: "Exo2-Regular", sans-serif;
+      font-size: 14px;
+      height: auto;
+      height: 520px;
+      line-height: 17px;
+      position: relative;
+      text-align: left;
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .editor-container {
+    zoom: 0.6;
+  }
+}

@@ -1,0 +1,88 @@
+@import "./helpers/color";
+
+.calendar-container {
+  background: $white;
+  border: 1px solid $gray5;
+  border-radius: 2px;
+  box-shadow: 0 15px 31px rgb(0 0 0 / 3.64%), 0 3.3504px 6.9242px rgb(0 0 0 / 5.36%);
+  position: absolute;
+  right: 20px;
+  top: 50px;
+  transition: all 0.3s ease-in-out;
+  width: 500px;
+  z-index: 9;
+
+  &.transparent {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .calend-header {
+    border-bottom: 1px solid $gray5;
+    height: 40px;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    .title {
+      color: $gray1;
+      font-family: "Exo2-Medium", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 40px;
+    }
+
+    .close-icon {
+      cursor: pointer;
+    }
+  }
+
+  .calendar {
+    height: 284px;
+
+    .date-picker {
+      border: none !important;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 12px !important;
+      padding-top: 10px;
+      width: 100%;
+    }
+  }
+
+  .btn-container {
+    align-items: center;
+    border-top: 1px solid $gray5;
+    display: flex;
+    height: 52px;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    .btn {
+      border: 1px solid $gray5;
+      border-radius: 2px;
+      color: $gray2;
+      cursor: pointer;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      height: 32px;
+      line-height: 30px;
+      margin-top: -1px;
+      text-align: center;
+      width: 84px;
+
+      &.selected {
+        border: solid 1px $green2 !important;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .calendar-container {
+    min-width: 500px;
+    right: -30px;
+    top: 5px;
+    width: calc(100% + 60px);
+  }
+}

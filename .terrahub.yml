@@ -1,0 +1,14 @@
+project:
+  name: ftl_mgr
+  code: 027a7c92
+  include:
+    - iac
+  exclude:
+    - .git
+    - .terraform
+    - node_modules
+
+terraform:
+  version: 1.2.3
+  varFile:
+    - default.tfvars

@@ -1,0 +1,1027 @@
+@import "./helpers/color";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $white;
+  font-family: "Exo2-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 1.43;
+  overflow-y: auto;
+  text-size-adjust: none;
+}
+
+::-webkit-scrollbar {
+  height: 3px;
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b5b3b3;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(0 0 0 / 10%);
+}
+
+.have-menu {
+  padding: 70px 0 0 240px;
+}
+
+.wrapper {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.center-ablock {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.top-header {
+  align-items: center;
+  background: $white;
+  border-bottom: 1px solid $gray5;
+  display: flex;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  width: calc(100% - 240px);
+  z-index: 10;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-line-through {
+  text-decoration: line-through;
+}
+
+.header-menu {
+  align-items: center;
+  display: flex;
+  position: absolute;
+  right: 20px;
+
+  input {
+    display: none;
+  }
+
+  span {
+    display: none;
+  }
+
+  .menu-icon-button {
+    appearance: none;
+    background-color: hsl(4deg 0% 0% / 0%);
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 24px;
+    margin-right: 22px;
+    padding: 0;
+    position: relative;
+    transition: background-color 200ms ease-out;
+    width: 24px;
+
+    &:hover {
+      background-color: hsl(4deg 0% 0% / 5%);
+    }
+
+    &.help::before {
+      background: $gray3;
+      content: "";
+      display: block;
+      height: 100%;
+      left: 50%;
+      mask-image: url("~@/assets/images/help-circle.svg");
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: 100%;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+
+    &.notification::before {
+      background: $gray3;
+      content: "";
+      display: block;
+      height: 100%;
+      left: 50%;
+      mask-image: url("~@/assets/images/bell.svg");
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: 100%;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+  }
+
+  .user-logo {
+    cursor: pointer;
+    height: 44px;
+    width: 44px;
+  }
+}
+
+.content {
+  margin: 10px 40px;
+
+  &.fill-height {
+    height: calc(100vh - 100px);
+  }
+
+  .fix-content {
+    height: calc(100vh - 210px);
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition-duration: 0.1s;
+    transition-property: opacity;
+  }
+
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0;
+  }
+
+  .breadcrumb-container {
+    display: flex;
+    margin: 20px 0;
+
+    .home {
+      background-color: $white;
+      height: 14px;
+      opacity: 0.3;
+      width: 15px;
+      cursor: pointer;
+    }
+
+    .param {
+      display: inherit;
+      margin-left: 16.5px;
+
+      .chevron {
+        margin-top: 2px;
+      }
+
+      .param-name {
+        font-family: "Exo2-Regular", sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 14px;
+        margin-left: 16.5px;
+        white-space: nowrap;
+      }
+
+      .bold {
+        color: $gray1 !important;
+      }
+
+      .normal {
+        color: $gray4;
+      }
+
+      .pointer {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.search-input {
+  background:
+    transparent url("~@/assets/images/search.svg") no-repeat 13px
+    center;
+  border: 1px solid $gray5;
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-family: "Exo2-Regular", sans-serif;
+  height: 40px;
+  margin-left: 40px;
+  max-width: 360px;
+  padding-left: 36px;
+  width: 35vw;
+}
+
+.search-input:focus,
+.search-input:hover {
+  background:
+    transparent url("~@/assets/images/search-green.svg") no-repeat
+    13px center;
+}
+
+.search-input::-webkit-search-cancel-button {
+  appearance: none;
+  background-image: url("~@/assets/images/x.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  height: 16px;
+  position: relative;
+  right: 10px;
+  width: 16px;
+}
+
+.side-menu {
+  background: $white;
+  border-right: 1px solid $gray5;
+  height: 100%;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 240px;
+
+  .logo-block {
+    align-items: center;
+    display: flex;
+    height: 70px;
+    justify-content: center;
+
+    a {
+      margin-right: 20px;
+
+      .logo-l {
+        height: 44px;
+      }
+
+      .logo-sm {
+        display: none;
+      }
+    }
+
+    .btn-close {
+      display: none;
+    }
+  }
+
+  .main-menu {
+    margin: 24px 0;
+
+    li {
+      a {
+        align-items: center;
+        border-left: 4px solid $white;
+        color: $gray3;
+        display: flex;
+        margin-bottom: 1px;
+        padding: 12px 19px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        position: relative;
+
+        .menu-icon {
+          background-color: currentcolor;
+          content: "";
+          font-size: 18px;
+          height: 24px;
+          margin: 0 0.125rem;
+          mask-position: center;
+          mask-repeat: no-repeat;
+          padding: 0 0.7em;
+          width: 24px;
+
+          &.icon-dashboard {
+            mask-image: url("~@/assets/images/server.svg");
+          }
+
+          &.icon-transactions {
+            mask-image: url("~@/assets/images/refresh-cw.svg");
+          }
+
+          &.icon-microservices {
+            mask-image: url("~@/assets/images/box.svg");
+          }
+
+          &.icon-messages {
+            mask-image: url("~@/assets/images/message-circle.svg");
+          }
+
+          &.icon-monitoring {
+            mask-image: url("~@/assets/images/airplay.svg");
+          }
+
+          &.icon-analytics {
+            mask-image: url("~@/assets/images/activity.svg");
+          }
+        }
+
+        span {
+          font-family: "Exo2-Regular", sans-serif;
+          font-size: 16px;
+          margin-left: 10px;
+        }
+
+        &:hover {
+          background-color: rgb(39 174 96 / 5%);
+          border-left: 4px solid $green2;
+          color: $green2;
+
+          span {
+            color: $gray1;
+          }
+        }
+
+        &.active {
+          background-color: rgb(39 174 96 / 5%);
+          border-left: 4px solid $green2;
+          color: $green2;
+
+          span {
+            color: $gray1;
+          }
+        }
+
+        &.soon {
+          background-image: url("~@/assets/images/soon.png");
+          background-position: 181px center;
+          background-repeat: no-repeat;
+          background-size: 39px 20px;
+        }
+
+        img.soon {
+          width: 32px;
+          position: absolute;
+          z-index: 5;
+          top: 5px;
+          left: 5px;
+        }
+      }
+    }
+  }
+
+  .menu-separator {
+    background-color: $gray5;
+    border: 0;
+    height: 1px;
+    margin: auto;
+    width: 200px;
+  }
+
+  .settings-menu {
+    margin: 24px 0 0;
+
+    li {
+      .sub-menu {
+        overflow: hidden;
+        transition: height 0.4s;
+
+        &.hidden {
+          height: 0 !important;
+          overflow: hidden;
+          transition: height 0.4s;
+        }
+      }
+
+      a {
+        align-items: center;
+        border-left: 4px solid $white;
+        color: $gray3;
+        cursor: pointer;
+        display: flex;
+        margin-bottom: 1px;
+        padding: 12px 19px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        position: relative;
+
+        .menu-icon {
+          background-color: currentcolor;
+          content: "";
+          font-size: 18px;
+          height: 24px;
+          margin: 0 0.125rem;
+          mask-position: center;
+          mask-repeat: no-repeat;
+          padding: 0 0.7em;
+          width: 24px;
+
+          &.opened {
+            background-color: $green2;
+          }
+
+          &.icon-settings {
+            mask-image: url("~@/assets/images/settings.svg");
+          }
+
+          &.icon-user {
+            mask-image: url("~@/assets/images/user.svg");
+          }
+
+          &.icon-users {
+            mask-image: url("~@/assets/images/users.svg");
+          }
+
+          &.icon-platform-config {
+            mask-image: url("~@/assets/images/sliders.svg");
+          }
+
+          &.icon-service-providers {
+            mask-image: url("~@/assets/images/hard-drive.svg");
+          }
+
+          &.icon-audit-trail {
+            mask-image: url("~@/assets/images/git-merge.svg");
+          }
+        
+          &.icon-mapping {
+            mask-image: url("~@/assets/images/mapping.svg");
+          }
+
+          &.icon-response {
+            mask-image: url("~@/assets/images/response.svg");
+          }
+
+          &.icon-monitoring {
+            mask-image: url("~@/assets/images/airplay.svg");
+          }
+
+          &.icon-analytics {
+            mask-image: url("~@/assets/images/activity.svg");
+          }
+        }
+        
+        img.soon {
+          width: 32px;
+          position: absolute;
+          z-index: 5;
+          top: 5px;
+          left: 5px;
+        }
+
+        span {
+          font-family: "Exo2-Regular", sans-serif;
+          font-size: 14px;
+          margin-left: 10px;
+
+          &.active {
+            color: $gray1;
+          }
+        }
+
+        &:hover {
+          background-color: rgb(39 174 96 / 5%);
+          border-left: 4px solid $green2;
+          color: $green2;
+
+          span {
+            color: $gray1;
+          }
+        }
+
+        &.active {
+          background-color: rgb(39 174 96 / 5%);
+          border-left: 4px solid $green2;
+          color: $green2;
+
+          span {
+            color: $gray1;
+          }
+        }
+
+        &.soon {
+          background-image: url("~@/assets/images/soon.png");
+          background-position: 181px center;
+          background-repeat: no-repeat;
+          background-size: 39px 20px;
+        }
+
+        &.have-submenu {
+          &::after {
+            background: url("~@/assets/images/chevron-down.svg") 0 0 no-repeat;
+            content: "";
+            height: 16px;
+            position: relative;
+            right: 0;
+            top: 0;
+            transform: rotate(0deg);
+            transition: transform 1s;
+            width: 16px;
+            z-index: -1;
+          }
+
+          &.is-opened::after {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+}
+
+.title-bar {
+  margin: 15px 0;
+  min-height: 44px;
+  position: relative;
+
+  &.gray {
+    background:
+      linear-gradient(
+        90deg,
+        rgb(255 255 255 / 100%) 52%,
+        rgb(248 248 248 / 100%) 75%,
+        rgb(236 236 236 / 100%) 100%
+      );
+  }
+
+  .card-toggle {
+    position: absolute;
+    right: 0;
+    top: -2px;
+
+    .toggle {
+      height: 0;
+      visibility: hidden;
+      width: 0;
+
+      &:checked + label {
+        background: $green2;
+      }
+
+      &:checked + label::after {
+        left: calc(100% + 1px);
+        transform: translateX(-100%);
+      }
+    }
+
+    .toggle-label {
+      background: $gray4;
+      border: 1px solid $gray5;
+      border-radius: 25px;
+      cursor: pointer;
+      display: block;
+      height: 18px;
+      position: absolute;
+      right: 20px;
+      text-indent: -9999px;
+      top: 15px;
+      width: 32px;
+
+      &::after {
+        background: #fff;
+        border: 1px solid $gray5;
+        border-radius: 90px;
+        content: "";
+        height: 16px;
+        left: -1px;
+        position: absolute;
+        top: -1px;
+        transition: 0.3s;
+        width: 16px;
+      }
+    }
+  }
+
+  .title-box {
+    .icon-background {
+      background-color: $green3;
+      border-radius: 2px;
+      height: 40px;
+      margin-right: 15px;
+      width: 40px;
+
+      .title-icon {
+        background-color: $green2;
+        content: "";
+        height: 20px;
+        margin: 0 0.125rem;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        padding: 0.7em;
+        width: 20px;
+
+        &.title-icon-dashboard {
+          mask-image: url("~@/assets/images/server.svg");
+        }
+
+        &.title-icon-transactions {
+          mask-image: url("~@/assets/images/refresh-cw.svg");
+        }
+
+        &.title-icon-microservices {
+          mask-image: url("~@/assets/images/box.svg");
+        }
+
+        &.title-icon-messages {
+          mask-image: url("~@/assets/images/message-circle.svg");
+        }
+
+        &.title-icon-monitoring {
+          mask-image: url("~@/assets/images/airplay.svg");
+        }
+
+        &.title-icon-analytics {
+          mask-image: url("~@/assets/images/activity.svg");
+        }
+
+        &.title-icon-settings {
+          mask-image: url("~@/assets/images/settings.svg");
+        }
+
+        &.title-icon-mapping {
+          mask-image: url("~@/assets/images/mapping.svg");
+        }
+
+        &.title-icon-response {
+          mask-image: url("~@/assets/images/response.svg");
+        }
+
+        &.title-icon-profile {
+          mask-image: url("~@/assets/images/user.svg");
+        }
+
+        &.title-icon-account {
+          mask-image: url("~@/assets/images/users.svg");
+        }
+
+        &.title-icon-configs {
+          mask-image: url("~@/assets/images/sliders.svg");
+        }
+
+        &.title-icon-providers {
+          mask-image: url("~@/assets/images/hard-drive.svg");
+        }
+
+        &.title-icon-audit {
+          mask-image: url("~@/assets/images/git-merge.svg");
+        }
+      }
+    }
+
+    h3 {
+      color: $gray1;
+      font-family: "Exo2-Regular", sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 29px;
+      margin-right: 13px;
+      white-space: nowrap;
+    }
+
+    h4 {
+      color: $green2;
+      font-family: "Exo2-Regular", sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 29px;
+      margin-right: 10px;
+    }
+
+    .edit-icon {
+      background: $gray3;
+      content: "";
+      cursor: pointer;
+      height: 14px;
+      margin-top: 5px;
+      mask-image: url("~@/assets/images/edit.svg");
+      mask-repeat: no-repeat;
+      opacity: 0.7;
+      width: 15px;
+    }
+  }
+
+  .actions {
+    .btn {
+      align-items: center;
+      border: none;
+      color: $white;
+      cursor: pointer;
+      display: flex;
+      font-family: "Exo2-Medium", sans-serif;
+      font-size: 14px;
+      height: 44px;
+      justify-content: center;
+      line-height: 16px;
+      padding: 0 24px;
+      text-align: center;
+      white-space: nowrap;
+
+      &.green {
+        background-color: $green2;
+      }
+
+      &.disabled {
+        background-color: $gray3;
+        cursor: not-allowed;
+      }
+
+      img {
+        height: 16px;
+        margin-right: 8px;
+        width: 16px;
+      }
+    }
+  }
+}
+
+@font-face {
+  font-family: "Exo2-Light";
+  font-style: normal;
+  font-weight: normal;
+  src: url("~@/assets/fonts/Exo2/Exo2-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Exo2-Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("~@/assets/fonts/Exo2/Exo2-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Exo2-Medium";
+  font-style: normal;
+  font-weight: normal;
+  src: url("~@/assets/fonts/Exo2/Exo2-Medium.ttf") format("truetype");
+}
+
+.button {
+  border: none;
+  border-radius: 2px;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Exo2-Medium", sans-serif;
+  font-size: 14px;
+  height: 44px;
+  letter-spacing: 0.04em;
+  line-height: 17px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+
+  &.green {
+    background-color: $green2;
+  }
+
+  &.disabled {
+    background: $gray6;
+    color: $gray4;
+    pointer-events: none;
+    transition: 0.3s ease-in-out;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .content {
+    zoom: 0.7;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .side-menu {
+    margin-left: 0;
+    min-width: 220px;
+    transition: margin-left 0.3s ease-in-out;
+    width: 100vw !important;
+    z-index: 30;
+
+    &.hidden {
+      margin-left: -130%;
+      transition: margin-left 0.3s ease-in-out;
+    }
+
+    .logo-block {
+      a {
+        .logo-l {
+          display: unset !important;
+          margin-left: -23px !important;
+        }
+
+        .logo-sm {
+          display: none !important;
+        }
+      }
+
+      .btn-close {
+        align-items: center;
+        background: $white;
+        border: 1px solid $gray4;
+        border-radius: 2px;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: unset;
+        display: flex;
+        height: 32px;
+        justify-content: center;
+        position: absolute;
+        right: 18px;
+        top: 18px;
+        width: 32px;
+      }
+    }
+
+    .menu-separator {
+      width: 91% !important;
+    }
+
+    .main-menu {
+      li {
+        a {
+          span {
+            display: unset !important;
+          }
+
+          &.soon {
+            background-image: url("~@/assets/images/soon.png");
+            background-position: 181px center !important;
+            background-repeat: no-repeat;
+            background-size: 39px 20px !important;
+          }
+        }
+      }
+    }
+
+    .settings-menu {
+      li {
+        a {
+          span {
+            display: unset !important;
+          }
+
+          &.soon {
+            background-image: url("~@/assets/images/soon.png");
+            background-position: 181px center !important;
+            background-repeat: no-repeat;
+            background-size: 39px 20px !important;
+          }
+        }
+      }
+    }
+  }
+
+  .search-input {
+    margin-left: 0;
+    width: 63vw;
+  }
+
+  .header-menu {
+    margin-right: 0;
+    position: relative;
+    right: 0;
+
+    .menu-icon-button {
+      display: none;
+    }
+  }
+
+  .have-menu {
+    padding: 70px 0 0 !important;
+
+    .top-header {
+      justify-content: space-between;
+      padding: 0 10px;
+      left: 0 !important;
+      width: 100% !important;
+
+      .burger-icon {
+        background-color: $gray6;
+        cursor: pointer;
+        display: none;
+        flex-direction: column;
+        height: 30px;
+        margin-right: 5px;
+        padding-top: 2px;
+        width: 30px;
+
+        span {
+          background-color: $gray3;
+          border-radius: 2px;
+          height: 3px;
+          margin-bottom: 7px;
+          width: 100%;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .title-bar {
+    display: flex;
+    flex-direction: column;
+
+    .card-toggle {
+      right: -10px;
+    }
+
+    .title-box {
+      min-width: 240px;
+    }
+
+    .actions {
+      .btn {
+        margin-top: 30px;
+        min-width: 235px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .have-menu {
+    .top-header {
+      .burger-icon {
+        display: flex;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .have-menu {
+    padding: 70px 0 0 95px;
+
+    .top-header {
+      left: 95px;
+      width: calc(100% - 95px);
+    }
+  }
+
+  .content {
+    margin: 10px 20px;
+    width: calc(100% - 40px);
+  }
+
+  .side-menu {
+    width: 75px;
+
+    .logo-block {
+      a {
+        .logo-l {
+          display: none;
+        }
+
+        .logo-sm {
+          display: unset;
+          height: 44px;
+          margin-left: 20px;
+        }
+      }
+    }
+
+    .menu-separator {
+      width: 70px;
+    }
+
+    .main-menu {
+      li {
+        a {
+          span {
+            display: none;
+          }
+
+          &.soon {
+            background-image: url("~@/assets/images/soon.png");
+            background-position: 55px center;
+            background-repeat: no-repeat;
+            background-size: 30px 15px;
+          }
+        }
+      }
+    }
+
+    .settings-menu {
+      li {
+        a {
+          span {
+            display: none;
+          }
+
+          &.soon {
+            background-image: url("~@/assets/images/soon.png");
+            background-position: 55px center;
+            background-repeat: no-repeat;
+            background-size: 30px 15px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,251 @@
+@import "./helpers/color";
+
+.panel-content {
+  padding: 40px 20px;
+
+  .txt {
+    background-color: #fcecdf;
+    border-radius: 2px;
+    color: #f08120;
+    font-family: "Exo2-Light", sans-serif;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    margin-top: -15px;
+    padding: 10px 10px 10px 62px;
+    position: relative;
+    text-align: justify;
+
+    .link {
+      color: rgb(39 133 255);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .img {
+      background-image: url("~@/assets/images/warning.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      height: 44px;
+      left: 10px;
+      margin: auto;
+      opacity: 0.9;
+      position: absolute;
+      top: calc(50% - 22px);
+      width: 44px;
+      z-index: 3;
+    }
+  }
+
+  .profile-img {
+    align-items: center;
+    display: flex;
+    height: 80px;
+    margin-bottom: 40px;
+    position: relative;
+
+    .delete-icon {
+      bottom: 0;
+      cursor: pointer;
+      left: 60px;
+      position: absolute;
+    }
+
+    .img-container {
+      background: $green3;
+      border: 4px solid $white;
+      border-radius: 50%;
+      margin-right: 20px;
+      overflow: hidden;
+
+      &.white-background {
+        background: $white !important;
+      }
+
+      .img {
+        align-items: center;
+        display: flex;
+        height: 80px;
+        justify-content: center;
+        width: 80px;
+
+        .avatar {
+          object-fit: fill;
+        }
+      }
+    }
+
+    .custom-upload-block {
+      .custom-file-input {
+        border: 1px solid $gray3;
+        border-radius: 2px;
+        color: $gray1;
+        display: flex;
+        font-family: "Exo2-Regular", sans-serif;
+        font-size: 14px;
+        height: 32px;
+        line-height: 30px;
+        padding-left: 12px;
+        padding-right: 12px;
+
+        &::before {
+          background-image: url("~@/assets/images/upload-cloud.svg");
+          content: " ";
+          display: block;
+          height: 16px;
+          left: 0;
+          margin-top: 7px;
+          top: 0;
+          width: 16px;
+        }
+
+        span {
+          margin-left: 7px;
+        }
+      }
+    }
+  }
+
+  .flex-form {
+    display: flex;
+
+    .input-box-short {
+      color: $gray1;
+      display: flex;
+      flex-direction: column;
+      margin-right: 20px;
+
+      label {
+        font-family: "Exo2-Medium", sans-serif;
+        font-size: 12px;
+        line-height: 14px;
+        margin-bottom: 12px;
+      }
+
+      .text-input {
+        border: 1px solid #e0e0e0;
+        border-radius: 2px;
+        box-sizing: border-box;
+        font-family: "Exo2-Light", sans-serif;
+        font-size: 14px;
+        height: 44px;
+        line-height: 17px;
+        padding-left: 12px;
+        padding-right: 12px;
+        width: 146px;
+      }
+    }
+  }
+
+  .input-box-long {
+    color: $gray1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-top: 20px;
+
+    label {
+      font-family: "Exo2-Medium", sans-serif;
+      font-size: 12px;
+      line-height: 14px;
+      margin-bottom: 12px;
+    }
+
+    .text-input {
+      border: 1px solid #e0e0e0;
+      border-radius: 2px;
+      box-sizing: border-box;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 14px;
+      height: 44px;
+      line-height: 17px;
+      padding-left: 12px;
+      padding-right: 12px;
+      width: 312px;
+    }
+  }
+
+  .btn {
+    background: $green2;
+    border-radius: 2px;
+    color: $white;
+    cursor: pointer;
+    font-family: "Exo2-Regular", sans-serif;
+    font-size: 14px;
+    line-height: 140%;
+    padding: 12px 24px;
+    text-align: center;
+    width: fit-content;
+
+    &.disabled {
+      background: $gray6;
+      color: $gray4;
+      pointer-events: none;
+    }
+  }
+}
+
+.change-pass-btn {
+  //margin-left: calc(100% - 165px);
+  background: $green2;
+  border-radius: 2px;
+  color: $white;
+  cursor: pointer;
+  font-family: "Exo2-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 140%;
+  padding: 12px 24px;
+  text-align: center;
+  width: 165px;
+
+  &.disabled {
+    background: $gray6;
+    color: $gray4;
+    pointer-events: none;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .panel-content {
+    padding: 20px 10px;
+
+    .flex-form {
+      flex-direction: column;
+
+      :first-child {
+        margin-bottom: 20px;
+      }
+
+      .input-box-short {
+        width: 100%;
+
+        .text-input {
+          width: 100%;
+        }
+      }
+    }
+
+    .input-box-long {
+      width: 100%;
+
+      .text-input {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .panel-content {
+    .profile-img {
+      flex-direction: column;
+      height: auto;
+      justify-content: center;
+
+      .img-container {
+        margin-bottom: 15px;
+        margin-right: 0;
+      }
+    }
+  }
+}
