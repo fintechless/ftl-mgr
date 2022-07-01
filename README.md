@@ -19,13 +19,13 @@ That's It! Enjoy Fintechless Platform in Your Private Environment
 
 ## Table of Content
 
-- [x] [Guiding Principles](https://github.com/fintechless/ftl-api/docs/principle.md)
-- [x] [Message Definitions](https://github.com/fintechless/ftl-api/docs/message.md)
-- [x] [MicroService Architecture](https://github.com/fintechless/ftl-api/docs/microservice/readme.md)
-  - [x] [Workflow: Client](https://github.com/fintechless/ftl-api/docs/workflow-client.md)
-  - [x] [Workflow: Server](https://github.com/fintechless/ftl-api/docs/workflow-server.md)
-- [x] [Environment Variables](https://github.com/fintechless/ftl-api/docs/environment.md)
-- [x] [Data Structures](https://github.com/fintechless/ftl-api/docs/data/readme.md)
-- [x] [Patterns and Conventions](https://github.com/fintechless/ftl-api/docs/pattern.md)
-- [x] [Development Environment](https://github.com/fintechless/ftl-api/docs/develop.md)
+- [x] [Guiding Principles](https://github.com/fintechless/ftl-api/blob/main/docs/principle.md)
+- [x] [Message Definitions](https://github.com/fintechless/ftl-api/blob/main/docs/message.md)
+- [x] [MicroService Architecture](https://github.com/fintechless/ftl-api/blob/main/docs/microservice/readme.md)
+  - [x] [Workflow: Client](https://github.com/fintechless/ftl-api/blob/main/docs/workflow-client.md)
+  - [x] [Workflow: Server](https://github.com/fintechless/ftl-api/blob/main/docs/workflow-server.md)
+- [x] [Environment Variables](https://github.com/fintechless/ftl-api/blob/main/docs/environment.md)
+- [x] [Data Structures](https://github.com/fintechless/ftl-api/blob/main/docs/data/readme.md)
+- [x] [Patterns and Conventions](https://github.com/fintechless/ftl-api/blob/main/docs/pattern.md)
+- [x] [Development Environment](https://github.com/fintechless/ftl-api/blob/main/docs/develop.md)
 - [x] [Fintechless Roadmap](https://github.com/fintechless/.github/blob/main/ROADMAP.md)
