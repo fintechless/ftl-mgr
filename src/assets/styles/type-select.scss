@@ -1,0 +1,93 @@
+@import "./helpers/color";
+
+.type-select {
+  border: 1px solid $gray5;
+  border-radius: 2px;
+  display: flex;
+  //height: 25px;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+
+  // &:hover {
+  //   background: $white;
+  //   border: 1px solid $gray4;
+  // }
+
+  .chevron {
+    top: 4px;
+    opacity: 0.5;
+    position: absolute;
+    right: 1px;
+    transform: rotate(180deg);
+    transition: all 0.3s ease-in-out;
+
+    &.opened {
+      transform: rotate(0deg);
+    }
+  }
+
+  .value {
+    color: $gray2;
+    font-family: "Exo2-Light", sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    padding-left: 5px;
+    width: calc(100% - 12px);
+  }
+
+  .placeholder {
+    color: $gray3;
+    font-family: "Exo2-Light", sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    padding-left: 5px;
+    width: calc(100% - 12px);
+  }
+}
+
+.fade-enter-active {
+  transition: opacity 0.4s ease;
+}
+
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.dropdown-container {
+  background: $gray6;
+  border-left: 1px solid $gray5;
+  border-radius: 2px;
+  border-right: 1px solid $gray5;
+  left: -1px;
+  position: absolute;
+  left: calc(55% + 1px);
+  width: 88px;
+  z-index: 3;
+
+  .option {
+    border-bottom: 1px solid $gray5;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px $gray5;
+    color: $gray1;
+    cursor: pointer;
+    font-family: "Exo2-Light", sans-serif;
+    font-size: 14px;
+    line-height: 25px;
+    padding: 2px 10px;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      background: $white;
+      box-shadow: 0 3px 2px $gray5;
+      font-size: 14.1px;
+      transition: all 0.2s;
+    }
+  }
+}

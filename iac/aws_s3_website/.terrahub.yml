@@ -1,0 +1,37 @@
+component:
+  name: aws_s3_website
+  dependsOn:
+    - aws_cloudfront_oai
+build:
+  env:
+    variables:
+      TERRAHUB_ENV: default
+      TERRAHUB_VAR_ACCOUNT_ID: $(aws sts get-caller-identity --output=text --query='Account')
+      TERRAHUB_VAR_REGION: $(aws ec2 describe-availability-zones --output=text --query='AvailabilityZones[0].RegionName')
+      TERRAHUB_VAR_S3_BUCKET_NAME: ftl-api-mgr-${TERRAHUB_ENV}-${TERRAHUB_VAR_REGION}-${TERRAHUB_VAR_ACCOUNT_ID}
+      TERRAHUB_VAR_S3_BUCKET_MAX_AGE: 600
+      TERRAHUB_BUILD_COMPILE_FILE: ${TERRAHUB_PROJECT_HOME}/bin/compile-frontend.sh
+      TERRAHUB_BUILD_LOCAL_PATH: ${TERRAHUB_PROJECT_HOME}
+      TERRAHUB_BUILD_SOURCE_PATH: ${TERRAHUB_PROJECT_HOME}/public ${TERRAHUB_PROJECT_HOME}/src
+      TERRAHUB_BUILD_S3_DEPLOY: ftl-api-deploy-${TERRAHUB_ENV}-${TERRAHUB_VAR_REGION}-${TERRAHUB_VAR_ACCOUNT_ID}
+      TERRAHUB_BUILD_S3_PATH: deploy/fintechless/ftl-mgr/${TERRAHUB_ENV}
+      TERRAHUB_BUILD_INDEX_FILE: index.txt
+      TERRAHUB_BUILD_DOTENV_FILE: .env
+      TERRAHUB_BUILD_OK: false
+  phases:
+    pre_build:
+      commands:
+        - echo '[BUILD] Running pre_build step'
+      finally:
+        - echo '[BUILD] Finished pre_build step'
+    build:
+      commands:
+        - echo '[BUILD] Running build step'
+        - if [ -f "${TERRAHUB_COMPONENT_HOME}/scripts/build.sh" ]; then ${TERRAHUB_COMPONENT_HOME}/scripts/build.sh; else ${TERRAHUB_CLI_HOME}/lib/scripts/aws/s3_bucket/build.sh; fi || { echo >&2 "[ERROR] Failed to run 'build.sh'. Aborting..."; exit 1; }
+      finally:
+        - echo '[BUILD] Finished build step'
+    post_build:
+      commands:
+        - echo '[BUILD] Running post_build step'
+      finally:
+        - echo '[BUILD] Finished post_build step'

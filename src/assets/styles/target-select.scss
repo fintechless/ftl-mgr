@@ -1,0 +1,102 @@
+@import "./helpers/color";
+
+.target-select {
+  border: 1px solid $gray5;
+  border-radius: 2px;
+  display: flex;
+  height: 30px;
+  justify-content: space-between;
+  padding-right: 5px;
+  position: relative;
+  width: 95%;
+
+  &:hover {
+    background: $white;
+    border: 1px solid $gray4;
+  }
+
+  .value {
+    color: $gray1;
+    cursor: pointer;
+    font-family: "Exo2-Light", sans-serif;
+    font-size: 14px;
+    line-height: 25px;
+    padding-left: 10px;
+    width: calc(100% - 12px);
+  }
+
+  .btn {
+    .arrow-up {
+      border-bottom: 4px solid $gray3;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      cursor: pointer;
+      height: 0;
+      margin-top: 7px;
+      width: 0;
+
+      &:hover {
+        border-bottom: 4px solid $gray1;
+      }
+    }
+
+    .arrow-down {
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid $gray3;
+      cursor: pointer;
+      height: 0;
+      margin-top: 6px;
+      width: 0;
+
+      &:hover {
+        border-top: 4px solid $gray1;
+      }
+    }
+  }
+
+  .fade-enter-active {
+    transition: opacity 0.4s ease;
+  }
+
+  .fade-leave-active {
+    transition: opacity 0.2s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  .dropdown-container {
+    background: $white;
+    border-left: 1px solid $gray5;
+    border-radius: 2px;
+    border-right: 1px solid $gray5;
+    left: -1px;
+    position: absolute;
+    top: calc(100% + 1px);
+    width: calc(100% + 2px);
+    z-index: 2;
+
+    .option {
+      border-bottom: 1px solid $gray5;
+      color: $gray1;
+      cursor: pointer;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 14px;
+      line-height: 25px;
+      overflow: hidden;
+      padding: 2px 8px;
+      text-overflow: ellipsis;
+      transition: all 0.2s ease-out;
+      width: 100%;
+
+      &:hover {
+        background: $gray5;
+        font-size: 14.1px;
+        transition: all 0.2s;
+      }
+    }
+  }
+}

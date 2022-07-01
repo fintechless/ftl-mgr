@@ -1,0 +1,150 @@
+@import "./helpers/color";
+
+.col-chart-container {
+  padding: 20px;
+  padding-right: 60px;
+  position: relative;
+  width: 65%;
+  z-index: 8;
+
+  .checkbox {
+    .elements {
+      .rectangle {
+        border-radius: 2px;
+        cursor: pointer;
+        height: 20px;
+        text-align: center;
+        width: 20px;
+      }
+
+      .title {
+        color: $gray3;
+        font-family: "Exo2-Light", sans-serif;
+        font-size: 14px;
+        margin-left: 8px;
+      }
+
+      .red {
+        background: $red;
+        margin-left: 40px;
+      }
+
+      .green {
+        background: $green;
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .graph-container {
+    border-bottom: 1px solid $gray5;
+    border-right: 1px solid $gray5;
+    height: 200px;
+    margin-top: 20px;
+    padding-left: 1.5%;
+    position: relative;
+    width: 100%;
+
+    .flex-el {
+      margin-right: 9.4%;
+      position: relative;
+
+      .graph-col {
+        bottom: 0;
+        position: absolute;
+        width: 20px;
+        z-index: 9;
+
+        .rejected {
+          background: $red;
+          border-radius: 2px;
+          height: auto;
+          position: relative;
+          transition: 0.5s;
+          width: 100%;
+
+          &.hidden {
+            height: 0 !important;
+            overflow: hidden;
+            transition: 0.5s;
+          }
+        }
+
+        .accepted {
+          background: $green;
+          border-top-left-radius: 2px;
+          border-top-right-radius: 2px;
+          height: auto;
+          position: relative;
+          transition: 0.5s;
+          width: 100%;
+
+          &.hidden {
+            height: 0 !important;
+            overflow: hidden;
+            transition: 0.5s;
+          }
+        }
+
+        .time-data {
+          bottom: -33px;
+          color: $gray3;
+          font-family: "Exo2-light", sans-serif;
+          font-size: 10px;
+          left: -1px;
+          position: absolute;
+          text-align: center;
+          white-space: nowrap;
+          width: 100%;
+        }
+      }
+    }
+
+    .dashed-scale {
+      border-top: 1px dashed $gray5;
+      bottom: 29px;
+      position: absolute;
+      right: 0;
+      width: 100%;
+      z-index: 7;
+
+      .count {
+        color: $gray3;
+        font-family: "Exo2-light", sans-serif;
+        font-size: 10px;
+        position: absolute;
+        right: -30px;
+        top: -8px;
+        width: 20px;
+      }
+
+      &.l-1 {
+        bottom: 39px;
+      }
+
+      &.l-2 {
+        bottom: 79px;
+      }
+
+      &.l-3 {
+        bottom: 119px;
+      }
+
+      &.l-4 {
+        bottom: 159px;
+      }
+
+      &.l-5 {
+        bottom: 199px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .col-chart-container {
+    border-top: 1px solid $gray5;
+    height: 301px;
+    width: 100%;
+  }
+}

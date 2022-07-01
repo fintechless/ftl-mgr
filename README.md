@@ -2,8 +2,8 @@
 
 Fintechless is an open source platform that simplifies orchestration and
 management of public cloud resources required to support globally scalable
-low latency financial systems powered by ISO 20022 messages. Our big dream
-and main goal is to make this open source project
+low latency financial systems powered by ISO 20022 messages and Kubernetes
+microservices. Our big dream and main goal is to make this open source project
 _The Serverless Platform for Financial Institutions and Fintechs_.
 
 ## Getting Started
@@ -19,13 +19,13 @@ That's It! Enjoy Fintechless Platform in Your Private Environment
 
 ## Table of Content
 
-- [ ] Guiding Principles
-- [ ] Message Definitions
-- [ ] MicroService Architecture
-  - [ ] Workflow: Client
-  - [ ] Workflow: Server
-- [ ] Environment Variables
-- [ ] Data Structures
-- [ ] Patterns and Conventions
-- [ ] Development Environment
-- [ ] Fintechless Roadmap
+- [x] [Guiding Principles](https://github.com/fintechless/ftl-api/docs/principle.md)
+- [x] [Message Definitions](https://github.com/fintechless/ftl-api/docs/message.md)
+- [x] [MicroService Architecture](https://github.com/fintechless/ftl-api/docs/microservice/readme.md)
+  - [x] [Workflow: Client](https://github.com/fintechless/ftl-api/docs/workflow-client.md)
+  - [x] [Workflow: Server](https://github.com/fintechless/ftl-api/docs/workflow-server.md)
+- [x] [Environment Variables](https://github.com/fintechless/ftl-api/docs/environment.md)
+- [x] [Data Structures](https://github.com/fintechless/ftl-api/docs/data/readme.md)
+- [x] [Patterns and Conventions](https://github.com/fintechless/ftl-api/docs/pattern.md)
+- [x] [Development Environment](https://github.com/fintechless/ftl-api/docs/develop.md)
+- [x] [Fintechless Roadmap](https://github.com/fintechless/.github/blob/main/ROADMAP.md)

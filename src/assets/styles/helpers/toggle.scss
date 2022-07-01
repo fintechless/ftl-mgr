@@ -1,0 +1,43 @@
+@import "./color";
+
+.toggle {
+  height: 0;
+  visibility: hidden;
+  width: 0;
+
+  &:checked + label {
+    background: $green2;
+  }
+
+  &:checked + label::after {
+    left: calc(100% + 1px);
+    transform: translateX(-100%);
+  }
+}
+
+.toggle-label {
+  background: $gray6;
+  border: 1px solid $gray5;
+  border-radius: 25px;
+  cursor: pointer;
+  display: block;
+  height: 18px;
+  position: absolute;
+  right: 20px;
+  text-indent: -9999px;
+  top: 20px;
+  width: 32px;
+
+  &::after {
+    background: #fff;
+    border: 1px solid $gray5;
+    border-radius: 90px;
+    content: "";
+    height: 16px;
+    left: -1px;
+    position: absolute;
+    top: -1px;
+    transition: 0.3s;
+    width: 16px;
+  }
+}

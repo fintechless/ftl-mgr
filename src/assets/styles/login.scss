@@ -1,0 +1,104 @@
+@import "./helpers/color";
+
+.login-block {
+  background: $white;
+  border-bottom: 1px solid $gray5;
+  border-left: 1px solid $gray5;
+  border-radius: 2px;
+  border-right: 1px solid $gray5;
+  box-shadow: 0 15px 31px rgb(0 0 0 / 3.64%), 0 3.3504px 6.9242px rgb(0 0 0 / 5.36%);
+  padding: 40px 60px 60px;
+
+  .top-border {
+    background: $green2;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    height: 4px;
+    left: -1px;
+    position: absolute;
+    top: 0;
+    width: calc(100% + 2px);
+  }
+
+  .login-logo {
+    display: block;
+    height: 60px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 60px;
+  }
+
+  p {
+    color: $gray1;
+    font-size: 24px;
+    line-height: 28.8px;
+    text-align: center;
+  }
+
+  .login-form {
+    width: 360px;
+
+    .login-lable {
+      color: $gray1;
+      font-family: "Exo2-Medium", sans-serif;
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    .login-input {
+      border: 1px solid $gray5;
+      border-radius: 2px;
+      box-sizing: border-box;
+      display: block;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 14px;
+      height: 44px;
+      line-height: 17px;
+      padding-left: 12px;
+      width: 100%;
+    }
+
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $gray4;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 14px;
+      line-height: 17px;
+      opacity: 1;
+    }
+
+    .forgot-link {
+      color: $green2;
+      cursor: pointer;
+      float: right;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 12px;
+      line-height: 20px;
+      text-decoration: none;
+    }
+
+    .login-btn {
+      background: $green2;
+      border: none;
+      border-radius: 2px;
+      color: $white;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Exo2-Medium", sans-serif;
+      font-size: 14px;
+      height: 44px;
+      letter-spacing: 0.04em;
+      line-height: 17px;
+      text-align: center;
+      text-transform: uppercase;
+      transition: all 0.3s ease-in-out;
+      width: 100%;
+
+      &.disabled {
+        background: $gray6;
+        color: $gray4;
+        pointer-events: none;
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+}

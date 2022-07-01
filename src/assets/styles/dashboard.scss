@@ -1,0 +1,13 @@
+.container-grid {
+  .row-adjust {
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 100%;
+
+    .container-element {
+      .container-card {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

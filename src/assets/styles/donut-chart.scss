@@ -1,0 +1,88 @@
+@import "./helpers/color";
+
+.donut-chart-container {
+  background: $gray6;
+  border-right: 1px solid $gray5;
+  height: 320px;
+  min-width: 342px;
+  position: relative;
+  width: 35%;
+
+  .donut {
+    height: 85%;
+
+    .count {
+      color: $gray1;
+      font-family: "Exo2-Regular", sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .title {
+      color: $gray3;
+      font-family: "Exo2-Light", sans-serif;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  .legend-container {
+    bottom: 0;
+    padding-left: 11%;
+    padding-right: 11%;
+    position: absolute;
+    width: 100%;
+
+    .legend {
+      position: relative;
+
+      .rectangle {
+        background: $green;
+        border: 5px solid $green3;
+        border-radius: 42px;
+        height: 20px;
+        margin-top: -2px;
+        width: 20px;
+
+        &.green {
+          background: $green;
+          border: 5px solid $green3;
+        }
+
+        &.red {
+          background: $red;
+          border: 5px solid $red2;
+        }
+      }
+
+      .status {
+        color: $gray3;
+        font-family: "Exo2-Light", sans-serif;
+        font-size: 14px;
+        line-height: 17px;
+        margin-left: 6px;
+      }
+
+      .value {
+        color: $gray1;
+        font-family: "Exo2-Regular", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 17px;
+        margin-left: 6px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .donut-chart-container {
+    border-right: none;
+    width: 100%;
+
+    .legend-container {
+      padding-left: 20%;
+      padding-right: 20%;
+    }
+  }
+}

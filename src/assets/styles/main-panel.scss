@@ -1,0 +1,173 @@
+@import "./helpers/color";
+
+.panel {
+  background: $white;
+  border: 1px solid $gray5;
+  border-radius: 2px;
+  margin-top: 30px;
+  min-width: 235px;
+  width: auto;
+
+  .panel-body {
+    border-top: 1px solid $gray5;
+    position: relative;
+
+    .trans-loader-container {
+      backdrop-filter: blur(5px);
+      background-color: rgb(255 255 255 / 50%);
+      display: flex;
+      height: calc(100% + 392px);
+      justify-content: center;
+      left: -1px;
+      padding-top: 300px;
+      position: absolute;
+      top: -391px;
+      width: calc(100% + 2px);
+      z-index: 2;
+    }
+  }
+
+  &.active .panel-body {
+    background: $gray6;
+  }
+
+  &.active .panel-header {
+    border-top: 3px solid $green2;
+  }
+
+  .panel-header {
+    align-items: center;
+    border-top: 3px solid $white;
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: relative;
+
+    .soon {
+      background-image: url("~@/assets/images/soon.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 39px 20px;
+      height: 73%;
+      left: 85px;
+      position: absolute;
+      top: 0;
+      width: 42px;
+    }
+
+    .panel-header-title {
+      display: flex;
+
+      .panel-icon {
+        background-color: $green3;
+        border-radius: 2px;
+        height: 32px;
+        margin-right: 12px;
+        width: 32px;
+
+        &.type-service {
+          background-color: $white;
+          border: 1px solid $gray5;
+          height: 30px;
+          width: 30px;
+        }
+
+        .icon {
+          background-color: $green2;
+          content: "";
+          height: 16px;
+          margin: 0 0.125rem;
+          mask-position: center;
+          mask-repeat: no-repeat;
+          padding: 0.7em;
+          width: 16px;
+
+          &.microservices {
+            mask-image: url("~@/assets/images/box.svg");
+          }
+
+          &.default {
+            mask-image: url("~@/assets/images/env-default.png");
+            mask-size: 21px 25px;
+          }
+
+          &.code {
+            mask-image: url("~@/assets/images/code-icon.svg");
+          }
+
+          &.clients {
+            background: $gray1;
+            mask-image: url("~@/assets/images/users-fill.svg");
+          }
+
+          &.aws {
+            background: url("~@/assets/images/aws-icon.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 20px 12px;
+          }
+
+          &.gcp {
+            background: url("~@/assets/images/gcp-icon.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 20px 16.1px;
+          }
+
+          &.azure {
+            background: url("~@/assets/images/azure-icon.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 24px 19px;
+          }
+        }
+      }
+
+      .panel-title {
+        color: $gray1;
+        font-family: "Exo2-Medium", sans-serif;
+        font-size: 16px;
+        line-height: 19px;
+        margin-right: 8px;
+      }
+
+      .panel-subtitle {
+        color: $green2;
+        font-family: "Exo2-Medium", sans-serif;
+        font-size: 16px;
+        line-height: 19px;
+        margin-right: 25px;
+      }
+    }
+
+    .actions {
+      .chevron {
+        transform: rotate(180deg);
+        transition: all 0.4s ease-in-out;
+
+        &.opened {
+          transform: rotate(0deg);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .panel {
+    min-width: 280px;
+
+    .panel-header {
+      padding: 0 10px;
+    }
+
+    .panel-body {
+      .clickable-title {
+        .chevron {
+          right: 10px;
+        }
+      }
+    }
+  }
+}
