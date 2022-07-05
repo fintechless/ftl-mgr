@@ -32,6 +32,6 @@ resource "aws_secretsmanager_secret_version" "this" {
   depends_on = [aws_s3_bucket.this]
   secret_id  = data.aws_secretsmanager_secret.this.id
   secret_string = jsonencode(merge(local.ftl_cicd_secret_map, {
-    FTL_FQDN_APP = local.ftl_domain == "" ? format("%s.%s", local.ftl_env == "default" ? local.ftl_subdomain_app : "${local.ftl_subdomain_app}-${local.ftl_env}", local.ftl_domain) : aws_s3_bucket.this.bucket_regional_domain_name
+    FTL_FQDN_APP = local.ftl_domain != "" ? format("%s.%s", local.ftl_env == "default" ? local.ftl_subdomain_app : "${local.ftl_subdomain_app}-${local.ftl_env}", local.ftl_domain) : aws_s3_bucket.this.bucket_regional_domain_name
   }))
 }

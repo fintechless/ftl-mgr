@@ -2,7 +2,7 @@ resource "aws_cloudfront_distribution" "this" {
   count = (data.aws_region.this.name == local.ftl_active) ? 1 : 0
 
   enabled = true
-  aliases = toset(split(",", local.ftl_fqdn_app))
+  aliases = local.ftl_domain != "" ? toset(split(",", local.ftl_fqdn_app)) : null
   comment = local.ftl_fqdn_app
 
   custom_error_response {
@@ -47,7 +47,7 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   origin {
-    origin_id   = data.terraform_remote_state.bucket_active.outputs.bucket_regional_domain_name
+    origin_id   = local.ftl_domain != "" ? data.terraform_remote_state.bucket_active.outputs.bucket_regional_domain_name : local.s3_active_origin_id
     domain_name = data.terraform_remote_state.bucket_active.outputs.bucket_regional_domain_name
     origin_path = ""
 
@@ -57,7 +57,7 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   origin {
-    origin_id   = data.terraform_remote_state.bucket_passive.outputs.bucket_regional_domain_name
+    origin_id   = local.ftl_domain != "" ? data.terraform_remote_state.bucket_passive.outputs.bucket_regional_domain_name : local.s3_passive_origin_id
     domain_name = data.terraform_remote_state.bucket_passive.outputs.bucket_regional_domain_name
     origin_path = ""
 
@@ -74,11 +74,11 @@ resource "aws_cloudfront_distribution" "this" {
     }
 
     member {
-      origin_id = data.terraform_remote_state.bucket_active.outputs.bucket_regional_domain_name
+      origin_id = local.ftl_domain != "" ? data.terraform_remote_state.bucket_active.outputs.bucket_regional_domain_name : local.s3_active_origin_id
     }
 
     member {
-      origin_id = data.terraform_remote_state.bucket_passive.outputs.bucket_regional_domain_name
+      origin_id = local.ftl_domain != "" ? data.terraform_remote_state.bucket_passive.outputs.bucket_regional_domain_name : local.s3_passive_origin_id
     }
   }
 
@@ -89,13 +89,11 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
 
-  dynamic "viewer_certificate" {
-    for_each = local.ftl_domain == "" ? [] : [null]
-    content {
-      acm_certificate_arn      = data.aws_acm_certificate.this[0].arn
-      ssl_support_method       = "sni-only"
-      minimum_protocol_version = "TLSv1.1_2016"
-    }
+  viewer_certificate {
+    cloudfront_default_certificate = local.ftl_domain != "" ? false : true
+    acm_certificate_arn            = local.ftl_domain != "" ? data.aws_acm_certificate.this[0].arn : null
+    ssl_support_method             = local.ftl_domain != "" ? "sni-only" : null
+    minimum_protocol_version       = local.ftl_domain != "" ? "TLSv1.1_2016" : null
   }
 
   tags = merge(var.tags, { Name = local.ftl_fqdn_app })
