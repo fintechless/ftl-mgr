@@ -91,8 +91,7 @@ function getMember(id, email) {
     .then((response) => {
       localStorage.setItem("member_id", response.data.data.id);
     })
-    .catch((error) => {
-      console.log("err", error);
+    .catch(() => {
       auth.signOut();
       localStorage.removeItem("member_id");
     });

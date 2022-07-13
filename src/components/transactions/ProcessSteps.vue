@@ -198,12 +198,8 @@ export default {
     openActions() {
       this.openAction = !this.openAction;
     },
-    uploadZip() {
-      console.log("uploadZip");
-    },
-    uploadGit() {
-      console.log("uploadGit");
-    },
+    uploadZip() {},
+    uploadGit() {},
     descriptionChange() {
       this.openDescription = !this.openDescription;
       localStorage.setItem("openDescription", this.openDescription);

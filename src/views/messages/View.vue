@@ -155,8 +155,13 @@ export default {
         () => {
           this.closeModal();
         },
-        (error) => {
-          console.log(error);
+        () => {
+          this.$toast.open({
+            message: "An error occurred while creating message",
+            type: "error",
+            position: "bottom",
+            duration: 3000,
+          });
           this.closeModal();
         }
       );

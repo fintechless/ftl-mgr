@@ -198,8 +198,13 @@ export default {
         () => {
           this.closeSlider();
         },
-        (error) => {
-          console.log(error);
+        () => {
+          this.$toast.open({
+            message: "An error occurred while creating transaction",
+            type: "error",
+            position: "bottom",
+            duration: 3000,
+          });
         }
       );
     },
