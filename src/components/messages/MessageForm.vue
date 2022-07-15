@@ -126,9 +126,7 @@ export default {
     }),
   },
   methods: {
-    inputFile(payload) {
-      console.log(payload);
-    },
+    inputFile() {},
     setDescription(payload) {
       this.editedMessage.description = payload;
     },

@@ -1,6 +1,16 @@
 <template>
-  <process-steps v-bind:activeStep="activeStep" @select="changeStep" />
-  <file-editor v-show="activeStep != 4" v-bind:activeStep="activeStep" />
+  <process-steps
+    :activeStep="activeStep"
+    :canSave="canSave"
+    @select="changeStep"
+    @clickSave="clickSave"
+  />
+  <file-editor
+    ref="fileEditor"
+    v-show="activeStep != 4"
+    :activeStep="activeStep"
+    @changeCanSave="changeCanSave"
+  />
   <coming-soon v-show="activeStep == 4" />
 </template>
 
@@ -25,6 +35,7 @@ export default {
   data() {
     return {
       activeStep: 0,
+      canSave: false,
     };
   },
   methods: {
@@ -37,6 +48,12 @@ export default {
           id: this.microserviceId,
         });
       }
+    },
+    changeCanSave(val) {
+      this.canSave = val;
+    },
+    clickSave() {
+      this.$refs.fileEditor.saveFiles();
     },
   },
   computed: {

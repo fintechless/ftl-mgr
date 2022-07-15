@@ -225,8 +225,7 @@ export default {
           });
           this.closeAdd();
         },
-        (error) => {
-          console.log(error);
+        () => {
           this.$toast.open({
             message: "An error occurred while editing the transaction",
             type: "error",
@@ -286,8 +285,7 @@ export default {
           });
           this.closeRemove();
         },
-        (error) => {
-          console.log(error);
+        () => {
           this.$toast.open({
             message: "An error occurred while editing the transaction",
             type: "error",
@@ -317,8 +315,7 @@ export default {
           });
           this.closeEdit();
         },
-        (error) => {
-          console.log(error);
+        () => {
           this.$toast.open({
             message: "An error occurred while editing the transaction",
             type: "error",

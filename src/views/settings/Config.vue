@@ -423,8 +423,13 @@ export default {
               });
             });
           },
-          (error) => {
-            console.log(error);
+          () => {
+            this.$toast.open({
+              message: "An error occurred while fetching data",
+              type: "error",
+              position: "bottom",
+              duration: 3000,
+            });
           }
         );
       });

@@ -36,6 +36,7 @@ import "codemirror/addon/edit/closetag.js";
 
 export default {
   name: "file-editor",
+  emits: ["changeCanSave"],
   components: {
     "e-treeview": ETreeView,
   },
@@ -44,8 +45,10 @@ export default {
       textFile: "",
       editor: null,
       files: [],
+      loadedFiles: [],
       selectedItem: null,
       baseUrl: "",
+      createNewEditor: true,
     };
   },
   props: {
@@ -58,6 +61,9 @@ export default {
     ...mapGetters({
       microservice: "microservices/getEditedMicroservice",
     }),
+    canSave() {
+      return this.loadedFiles.some((item) => item.content != item.newContent);
+    },
   },
   methods: {
     setMode(mode) {
@@ -90,6 +96,7 @@ export default {
       this.baseUrl = this.microservice.path;
     },
     fileSelected(file) {
+      this.createNewEditor = true;
       this.selectedItem = file;
       this.downloadFile();
     },
@@ -102,7 +109,22 @@ export default {
       }).then((response) => {
         let reader = new FileReader();
         reader.addEventListener("loadend", (e) => {
-          this.setContent(e.srcElement.result, extension);
+          if (
+            !this.loadedFiles.some(
+              (item) => item.file_path == this.selectedItem
+            )
+          ) {
+            this.loadedFiles.push({
+              id: this.microservice.id,
+              content: e.srcElement.result,
+              newContent: e.srcElement.result,
+              file_path: this.selectedItem,
+            });
+          }
+          let loadedFile = this.loadedFiles.find(
+            (item) => item.file_path == this.selectedItem
+          );
+          if (loadedFile) this.setContent(loadedFile.newContent, extension);
         });
         reader.readAsText(response.data);
       });
@@ -112,22 +134,55 @@ export default {
       this.createEditor(type);
     },
     createEditor(type = "gfm") {
-      if (this.editor) this.editor.toTextArea();
-      this.editor = CodeMirror.fromTextArea(
-        document.getElementById("codebox"),
-        {
-          mode: type,
-          lineNumbers: true,
-          autoCloseTags: true,
-          theme: "neat",
-        }
+      if (this.createNewEditor) {
+        if (this.editor) this.editor.toTextArea();
+        this.editor = CodeMirror.fromTextArea(
+          document.getElementById("codebox"),
+          {
+            mode: type,
+            lineNumbers: true,
+            autoCloseTags: true,
+            theme: "neat",
+          }
+        );
+        this.editor.on("change", (editor) => {
+          let text = editor.doc.getValue();
+          if (!this.createNewEditor) {
+            this.loadedFiles.find(
+              (item) => item.file_path == this.selectedItem
+            ).newContent = text;
+          } else this.createNewEditor = false;
+        });
+      }
+    },
+    saveFiles() {
+      console.log("SaveClick");
+      this.loadedFiles
+        .filter((item) => item.content != item.newContent)
+        .forEach((element) => {
+          let model = {
+            id: element.id,
+            content: btoa(element.newContent),
+            file_path: `git${this.microservice.path.split("git")[1]}/${
+              element.file_path
+            }`,
+          };
+          this.$store.dispatch("microservices/saveFile", model);
+        });
+      let newArray = this.loadedFiles.filter(
+        (item) => item.file_path == this.selectedItem
       );
+      newArray[0].newContent = newArray[0].content;
+      this.loadedFiles = newArray;
     },
   },
   watch: {
     microservice() {
       this.getPath();
       this.getFiles();
+    },
+    canSave(val) {
+      this.$emit("changeCanSave", val);
     },
   },
   mounted() {

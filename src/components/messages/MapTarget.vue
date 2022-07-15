@@ -4,8 +4,8 @@
       {{ selected && selected.name ? selected.name : "-" }}
     </div>
     <div class="btn">
-      <div class="arrow-up" @click="scrollTo('previous')"></div>
-      <div class="arrow-down" @click="scrollTo('next')"></div>
+      <div class="arrow-up"></div>
+      <div class="arrow-down"></div>
     </div>
     <Transition name="fade">
       <div class="dropdown-container" v-if="showOptions">
@@ -45,10 +45,6 @@ export default {
   methods: {
     onClickOutside() {
       this.showOptions = false;
-    },
-    scrollTo(direction) {
-      // TODO: scroll to the selected direction
-      console.log(direction);
     },
     setValue(payload) {
       let newValue = payload != null ? payload : { name: "", type: "" };

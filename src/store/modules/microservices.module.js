@@ -94,6 +94,19 @@ const actions = {
       }
     );
   },
+  saveFile({ commit }, payload) {
+    commit("setLoading", true);
+    return microservicesService.updateMicroservice(payload).then(
+      () => {
+        commit("setLoading", false);
+        return Promise.resolve();
+      },
+      (error) => {
+        commit("setLoading", false);
+        return Promise.reject(error);
+      }
+    );
+  },
 };
 
 const mutations = {
