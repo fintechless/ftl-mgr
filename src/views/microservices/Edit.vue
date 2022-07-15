@@ -74,7 +74,7 @@ export default {
   },
   data() {
     return {
-      editId: null,
+      editId: "",
       checked: false,
       isLoading: false,
       showEdit: false,

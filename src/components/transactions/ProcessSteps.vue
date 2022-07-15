@@ -64,6 +64,13 @@
         </li>
       </ul>
       <div class="steps-actions">
+        <button
+          v-if="canSave && activeStep != 4"
+          class="btn green"
+          v-on:click="clickSave"
+        >
+          Save
+        </button>
         <button v-if="activeStep == 0" class="btn green disabled">
           Git Commit
         </button>
@@ -178,11 +185,15 @@
 <script>
 export default {
   name: "process-steps",
-  emits: ["select"],
+  emits: ["select", "clickSave"],
   props: {
     activeStep: {
       type: Number,
       default: 0,
+    },
+    canSave: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -203,6 +214,9 @@ export default {
     descriptionChange() {
       this.openDescription = !this.openDescription;
       localStorage.setItem("openDescription", this.openDescription);
+    },
+    clickSave() {
+      this.$emit("clickSave");
     },
   },
   computed: {
